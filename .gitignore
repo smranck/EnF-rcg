@@ -1,0 +1,21 @@
+# Dependency directories
+node_modules/
+
+# npm
+package-lock.json
+
+#todo
+todo.me
+
+# dotenv environment variables file
+.env
+
+# vscode
+.vscode
+
+# webpack
+client/dist/bundle.js
+client/dist/index.html
+
+# Not sure what this is right now
+client/.DS_Store
