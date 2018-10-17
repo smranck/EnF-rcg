@@ -1,6 +1,7 @@
 import React from 'react';
 
 export default class App extends React.Component {
+  // returns an array of individual rolls
   static rollDice(numberOfDice, sides) {
     let rolls = [];
     for (let i = 0; i < numberOfDice; i += 1) {
