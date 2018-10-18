@@ -19,7 +19,23 @@ export default class App extends React.Component {
       3: 'Human',
       4: 'Iquoran',
       5: 'Khibblan',
+      6: 'Chezan',
+      7: 'Cubi',
+      8: 'Felia',
+      9: 'Jarrith',
+      10: 'Lich',
+      11: 'Merfolk',
+      12: 'True Banshee',
+      13: 'Valkyr Aspect',
     };
+    let num;
+    if (originalsOnly) {
+      num = Math.floor(Math.random() * 6);
+    } else {
+      num = Math.floor(Math.random() * 13);
+    }
+
+    return [num, races[num]];
   }
 
   constructor(props) {
