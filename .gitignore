@@ -5,7 +5,7 @@ node_modules/
 package-lock.json
 
 #todo
-todo.me
+todo.md
 
 # dotenv environment variables file
 .env
