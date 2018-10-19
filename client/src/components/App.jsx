@@ -11,7 +11,7 @@ export default class App extends React.Component {
     return rolls;
   }
 
-  static chooseRace(originalsOnly) {
+  static chooseRace(originalsOnly = false) {
     let races = {
       0: 'Arkhan',
       1: 'Equirion',
@@ -41,6 +41,20 @@ export default class App extends React.Component {
 
   static chooseLevel(max = 20) {
     return Math.ceil(Math.random() * max);
+  }
+
+  // returns an array of attribute values, sorted low to high
+  static createAttributes() {
+    let attributes = [];
+
+    for (let i = 0; i < 6; i += 1) {
+      let roll = App.rollDice(3, 6);
+      attributes.push(roll[2] + roll[3]);
+    }
+
+    attributes.sort((a, b) => a - b);
+
+    return attributes;
   }
 
   constructor(props) {
