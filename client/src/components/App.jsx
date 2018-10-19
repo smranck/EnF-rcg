@@ -28,6 +28,7 @@ export default class App extends React.Component {
       12: 'True Banshee',
       13: 'Valkyr Aspect',
     };
+
     let num;
     if (originalsOnly) {
       num = Math.floor(Math.random() * 6);
@@ -36,6 +37,10 @@ export default class App extends React.Component {
     }
 
     return [num, races[num]];
+  }
+
+  static chooseLevel(max = 20) {
+    return Math.ceil(Math.random() * max);
   }
 
   constructor(props) {
