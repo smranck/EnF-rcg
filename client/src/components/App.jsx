@@ -57,6 +57,20 @@ export default class App extends React.Component {
     return attributes;
   }
 
+  // returns an array of quality values, sorted low to high
+  static createQualities() {
+    let qualities = [];
+
+    for (let i = 0; i < 3; i += 1) {
+      let roll = App.rollDice(3, 6);
+      qualities.push(roll[2] + roll[3]);
+    }
+
+    qualities.sort((a, b) => a - b);
+
+    return qualities;
+  }
+
   constructor(props) {
     super(props);
   }
