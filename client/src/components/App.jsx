@@ -75,12 +75,16 @@ export default class App extends React.Component {
   static chooseTraits(number) {
     let traits = [];
     let savant = false;
+    let hash = {};
     // if savant, there can be no other traits
     while (traits.length < number && !savant) {
       let whichTrait = Math.floor(Math.random() * 56);
-      if (whichTrait) {
+      if (hash[whichTrait]) {
+        console.log('Dupe traits');
+      } else if (whichTrait) {
         // not 0. 0 is savant
         traits.push(whichTrait);
+        hash[whichTrait] = true;
       } else {
         // savant case
         savant = true;
