@@ -103,6 +103,15 @@ export default class App extends React.Component {
     */
   }
 
+  // function to randomly assign skills
+  static chooseSkills(level, modifier) {
+    /*
+    Each class has the same number of skills
+    number of skills depends on level
+    Only basics can be assigned up to a certain threshold
+    */
+  }
+
   constructor(props) {
     super(props);
   }
