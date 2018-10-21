@@ -71,6 +71,25 @@ export default class App extends React.Component {
     return qualities;
   }
 
+  // function to choose traits randomly. Returns an array.
+  static chooseTraits(number) {
+    let traits = [];
+    let savant = false;
+    // if savant, there can be no other traits
+    while (traits.length < number && !savant) {
+      let whichTrait = Math.floor(Math.random() * 56);
+      if (whichTrait) {
+        // not 0. 0 is savant
+        traits.push(whichTrait);
+      } else {
+        // savant case
+        savant = true;
+        traits = [0];
+      }
+    }
+    return traits;
+  }
+
   constructor(props) {
     super(props);
   }
