@@ -94,6 +94,15 @@ export default class App extends React.Component {
     return traits;
   }
 
+  // function to randomly assign a class
+  static chooseClass(native = false) {
+    /*
+      Plan: if native is something, use it
+      otherwise, assign at true random
+      therefore, must list in order such that classes of races are adjacent?
+    */
+  }
+
   constructor(props) {
     super(props);
   }
