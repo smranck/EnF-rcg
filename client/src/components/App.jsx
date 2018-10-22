@@ -52,7 +52,7 @@ export default class App extends React.Component {
       attributes.push(roll[2] + roll[3]);
     }
 
-    attributes.sort((a, b) => a - b);
+    // attributes.sort((a, b) => a - b);
 
     return attributes;
   }
@@ -66,7 +66,7 @@ export default class App extends React.Component {
       qualities.push(roll[2] + roll[3]);
     }
 
-    qualities.sort((a, b) => a - b);
+    // qualities.sort((a, b) => a - b);
 
     return qualities;
   }
