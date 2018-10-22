@@ -116,7 +116,7 @@ export default class App extends React.Component {
     /*
     create an object to hold the values
       if params are not equal, sort the attributes array
-        then sort the attributes
+        then sort the values
 
       assign the values to the attributes
 
@@ -127,8 +127,8 @@ export default class App extends React.Component {
   static assignQualities(qualityValuesArray, obs = 10, char = 10, wis = 10) {
     /*
     create an object to hold the values
-      if params are not equal, sort the attributes array
-        then sort the qualites
+      if params are not equal, sort the qualities array
+        then sort the values
 
       assign the values to the qualities
 
