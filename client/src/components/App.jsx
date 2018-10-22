@@ -114,11 +114,23 @@ export default class App extends React.Component {
 
   static assignAttributes(attributeValuesArray, str = 10, spr = 10, vit = 10, dex = 10, agi = 10) {
     /*
-    create an objuect to hold the values
+    create an object to hold the values
       if params are not equal, sort the attributes array
         then sort the attributes
 
       assign the values to the attributes
+
+      return as an object with the values assigned
+    */
+  }
+
+  static assignQualities(qualityValuesArray, obs = 10, char = 10, wis = 10) {
+    /*
+    create an object to hold the values
+      if params are not equal, sort the attributes array
+        then sort the qualites
+
+      assign the values to the qualities
 
       return as an object with the values assigned
     */
