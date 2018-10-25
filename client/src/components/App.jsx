@@ -40,7 +40,7 @@ export default class App extends React.Component {
   }
 
   static chooseLevel(max = 20) {
-    return Math.ceil(Math.random() * max);
+    return Math.ceil(Math.random() * max) + 1;
   }
 
   // returns an array of attribute values, sorted low to high
