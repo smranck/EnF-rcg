@@ -44,7 +44,7 @@ export default class App extends React.Component {
   }
 
   // returns an array of attribute values, sorted low to high
-  static createAttributes() {
+  static createAttributes(level) {
     let attributes = [];
 
     for (let i = 0; i < 6; i += 1) {
@@ -58,7 +58,7 @@ export default class App extends React.Component {
   }
 
   // returns an array of quality values, sorted low to high
-  static createQualities() {
+  static createQualities(level) {
     let qualities = [];
 
     for (let i = 0; i < 3; i += 1) {
@@ -72,7 +72,14 @@ export default class App extends React.Component {
   }
 
   // function to choose traits randomly. Returns an array.
-  static chooseTraits(number) {
+  static chooseTraits(level, hardworking) {
+    let number = 2 + Math.floor(level / 7);
+    if (level === 20) {
+      number += 1;
+    }
+    if (hardworking) {
+      number += 1;
+    }
     let traits = [];
     let savant = false;
     let hash = {};
