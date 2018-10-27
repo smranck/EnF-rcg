@@ -133,59 +133,47 @@ export default class App extends React.Component {
         let nativeClasses = [1, 2, 3, 4];
         assignedClass = classes[nativeClasses[random]];
       } else if (race[1] === 'Equirion') {
-        let nativeClasses = [];
+        let nativeClasses = [5, 6, 7, 8];
         assignedClass = classes[nativeClasses[random]];
       } else if (race[1] === 'Fibblan') {
-        let nativeClasses = [];
+        let nativeClasses = [9, 10, 11, 12];
         assignedClass = classes[nativeClasses[random]];
       } else if (race[1] === 'Human') {
-        let nativeClasses = [];
+        let nativeClasses = [13, 14, 15, 16];
         assignedClass = classes[nativeClasses[random]];
       }
     } else if (race[0] < 6) {
       // 10 possibilities
       let random = Math.floor(Math.random() * 10);
       if (race[1] === 'Iquoran') {
-        let nativeClasses = [];
+        let nativeClasses = [5, 6, 7, 8, 13, 14, 15, 16, 17, 18];
         assignedClass = classes[nativeClasses[random]];
         //
       } else if (race[1] === 'Khibblan') {
-        let nativeClasses = [];
+        let nativeClasses = [1, 2, 3, 4, 9, 10, 11, 12, 19, 20];
         assignedClass = classes[nativeClasses[random]];
       }
     } else if (race) {
       // there are 6 possibilities
       let random = Math.floor(Math.random() * 6);
       if (race[1] === 'Chezan') {
-        /* Native Classes:
-        Divine Sentinel,
-        Empyreal Ronin,
-        Flow Assimilator,
-        Runic Chevalier,
-        Soul Morpher,
-        Twilight Sentry */
-        let nativeClasses = [];
+        let nativeClasses = [9, 14, 10, 16, 12, 20];
         assignedClass = classes[nativeClasses[random]];
       } else if (race[1] === 'Cubi') {
-        let nativeClasses = [];
+        let nativeClasses = [5, 6, 10, 11, 17, 20];
         assignedClass = classes[nativeClasses[random]];
-        /* Arcane Ranger, Blood Letterer, Flow Assimilator, Flow Rupturor, Mystic Gunslinger, Twilight Sentry */
       } else if (race[1] === 'Felia') {
-        let nativeClasses = [];
+        let nativeClasses = [2, 14, 19, 4, 15, 18];
         assignedClass = classes[nativeClasses[random]];
-        /* Crush Avatar, Empyreal Ronin, Glorious Hunter, Infernal Reaper, Noble Gallant, Resolute Champion */
       } else if (race[1] === 'Jarrith') {
-        let nativeClasses = [];
+        let nativeClasses = [1, 9, 3, 11, 19, 4];
         assignedClass = classes[nativeClasses[random]];
-        /* Artillery Jockey, Divine Sentinel, Doom Harbinger, Flow Rupturor, Glorious Hunter, Infernal Reaper */
       } else if (race[1] === 'Merfolk') {
-        let nativeClasses = [];
+        let nativeClasses = [1, 7, 13, 15, 16, 18];
         assignedClass = classes[nativeClasses[random]];
-        /* Artillery Jockey, Cross Assailant, Crusade Maestro, Noble Gallant, Resolute Champion, Runic Chevalier */
       } else if (race[1] === 'True Banshee') {
-        let nativeClasses = [];
+        let nativeClasses = [5, 6, 7, 8, 13, 17];
         assignedClass = classes[nativeClasses[random]];
-        /* Arcane Ranger, Blood Letterer, Cross Assailant, Crusade Maestro, Essence Abolisher, Mystic Gunslinger */
       }
     } else {
       // this is the pick at random version
