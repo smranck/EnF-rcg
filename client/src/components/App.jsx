@@ -75,10 +75,11 @@ export default class App extends React.Component {
       number += 1;
     }
     if (hardworking) {
-      number += 1;
+      number += 2;
     }
     let traits = [];
     let savant = false;
+    // savant will not be in the hash - no 0;
     let hash = {};
     // if savant, there can be no other traits
     while (traits.length < number && !savant) {
@@ -98,13 +99,99 @@ export default class App extends React.Component {
     return traits;
   }
 
-  // function to randomly assign a class
-  static chooseClass(native = false) {
-    /*
-      Plan: if native is something, use it
-      otherwise, assign at true random
-      therefore, must list in order such that classes of races are adjacent?
-    */
+  // function to randomly assign a class. Race should be an array
+  static chooseClass(race = false) {
+    let classes = {
+      1: 'Artillery Jockey',
+      2: 'Crush Avatar',
+      3: 'Doom Harbinger',
+      4: 'Infernal Reaper',
+      5: 'Arcane Ranger',
+      6: 'Blood Letterer',
+      7: 'Cross Assailant',
+      8: 'Essence Abolisher',
+      9: 'Divine Sentinel',
+      10: 'Flow Assimilator',
+      11: 'Flow Rupturer',
+      12: 'Soul Morpher',
+      13: 'Crusade Maestro',
+      14: 'Empyreal Ronin',
+      15: 'Noble Gallant',
+      16: 'Runic Chevalier',
+      17: 'Mystic Gunslinger',
+      18: 'Resolute Champion',
+      19: 'Glorious Hunter',
+      20: 'Twilight Sentry',
+    };
+
+    let assignedClass;
+    // Race is only given if native is desired. Could later weight native classes.
+    if (race[0] < 4) {
+      // there are 4 possibilities
+      let random = Math.floor(Math.random() * 4);
+      if (race[1] === 'Arkhan') {
+        let nativeClasses = [1, 2, 3, 4];
+        assignedClass = classes[nativeClasses[random]];
+      } else if (race[1] === 'Equirion') {
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+      } else if (race[1] === 'Fibblan') {
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+      } else if (race[1] === 'Human') {
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+      }
+    } else if (race[0] < 6) {
+      // 10 possibilities
+      let random = Math.floor(Math.random() * 10);
+      if (race[1] === 'Iquoran') {
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+        //
+      } else if (race[1] === 'Khibblan') {
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+      }
+    } else if (race) {
+      // there are 6 possibilities
+      let random = Math.floor(Math.random() * 6);
+      if (race[1] === 'Chezan') {
+        /* Native Classes:
+        Divine Sentinel,
+        Empyreal Ronin,
+        Flow Assimilator,
+        Runic Chevalier,
+        Soul Morpher,
+        Twilight Sentry */
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+      } else if (race[1] === 'Cubi') {
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+        /* Arcane Ranger, Blood Letterer, Flow Assimilator, Flow Rupturor, Mystic Gunslinger, Twilight Sentry */
+      } else if (race[1] === 'Felia') {
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+        /* Crush Avatar, Empyreal Ronin, Glorious Hunter, Infernal Reaper, Noble Gallant, Resolute Champion */
+      } else if (race[1] === 'Jarrith') {
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+        /* Artillery Jockey, Divine Sentinel, Doom Harbinger, Flow Rupturor, Glorious Hunter, Infernal Reaper */
+      } else if (race[1] === 'Merfolk') {
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+        /* Artillery Jockey, Cross Assailant, Crusade Maestro, Noble Gallant, Resolute Champion, Runic Chevalier */
+      } else if (race[1] === 'True Banshee') {
+        let nativeClasses = [];
+        assignedClass = classes[nativeClasses[random]];
+        /* Arcane Ranger, Blood Letterer, Cross Assailant, Crusade Maestro, Essence Abolisher, Mystic Gunslinger */
+      }
+    } else {
+      // this is the pick at random version
+      assignedClass = classes[Math.floor(Math.random() * 20) + 1];
+    }
+    // NOTE: LICHES and Valkyrs DO IT ALL
   }
 
   // function to randomly assign skills
