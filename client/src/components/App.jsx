@@ -11,6 +11,7 @@ export default class App extends React.Component {
     return rolls;
   }
 
+  // returns an array [number, 'race']
   static chooseRace(originalsOnly = false) {
     let races = {
       0: 'Arkhan',
@@ -43,8 +44,8 @@ export default class App extends React.Component {
     return Math.ceil(Math.random() * max) + 1;
   }
 
-  // returns an array of attribute values, sorted low to high
-  static createAttributes(level) {
+  // returns an array of attribute values in a random order
+  static createAttributes() {
     let attributes = [];
 
     for (let i = 0; i < 6; i += 1) {
@@ -52,21 +53,17 @@ export default class App extends React.Component {
       attributes.push(roll[2] + roll[3]);
     }
 
-    // attributes.sort((a, b) => a - b);
-
     return attributes;
   }
 
-  // returns an array of quality values, sorted low to high
-  static createQualities(level) {
+  // returns an array of quality values in a random order
+  static createQualities() {
     let qualities = [];
 
     for (let i = 0; i < 3; i += 1) {
       let roll = App.rollDice(3, 6);
       qualities.push(roll[2] + roll[3]);
     }
-
-    // qualities.sort((a, b) => a - b);
 
     return qualities;
   }
@@ -159,11 +156,13 @@ export default class App extends React.Component {
     return values;
   }
 
+  // function to assign the randomly values to qualities
   static assignQualities(qualityValuesArray, ordered, obs = 10, char = 10, wis = 10) {
     let values = { obs, char, wis };
     let qualities = ['obs', 'char', 'wis'];
     let qualityValues = qualityValuesArray.slice();
 
+    // if preference was indicated, the arrays must be sorteds
     if (ordered) {
       qualityValues.sort();
       qualities.sort((a, b) => values[a] - values[b]);
