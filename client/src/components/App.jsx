@@ -160,15 +160,21 @@ export default class App extends React.Component {
   }
 
   static assignQualities(qualityValuesArray, ordered, obs = 10, char = 10, wis = 10) {
-    /*
-    create an object to hold the values
-      if params are not equal, sort the qualities array
-        then sort the values
+    let values = { obs, char, wis };
+    let qualities = ['obs', 'char', 'wis'];
+    let qualityValues = qualityValuesArray.slice();
 
-      assign the values to the qualities
+    if (ordered) {
+      qualityValues.sort();
+      qualities.sort((a, b) => values[a] - values[b]);
+    }
 
-      return as an object with the values assigned
-    */
+    for (let i = 0; i < qualities.length; i += 1) {
+      let current = qualities[i];
+      values[current] = qualityValues[i];
+    }
+
+    return values;
   }
 
   constructor(props) {
