@@ -192,7 +192,7 @@ export default class App extends React.Component {
   static chooseSkills(level, modifier = 0) {
     // totalSkillCount reflects total skills needed
     let totalSkillCount = 2;
-    let totalSkillsAssigned = 0;
+    let assignedSkills = [];
     let advancedSkillsAssigned = 0;
     totalSkillCount += modifier;
     // a skill is gained every odd level other than level 1
@@ -214,17 +214,18 @@ export default class App extends React.Component {
     let random = Math.ceil(Math.random() * 6);
     // assign the initial skill
     skills[random] = random;
+    assignedSkills.push(random);
     // create and assign the second skill
     while (skills[random]) {
       random = Math.ceil(Math.random() * 6);
     }
     skills[random] = random;
-    totalSkillsAssigned += 2;
+    assignedSkills.push(random);
 
     // if more skills are needed, up to 4, they could be advanced skills
     if (totalSkillCount > 2) {
       // assign skills until the correct total have been assigned
-      while (totalSkillsAssigned < totalSkillCount) {
+      while (assignedSkills.length < totalSkillCount) {
         // create a random value that hasn't been assigned yet
         while (skills[random]) {
           if (advancedSkillsAssigned >= 2) {
@@ -235,7 +236,7 @@ export default class App extends React.Component {
           }
         }
         skills[random] = random;
-        totalSkillsAssigned += 1;
+        assignedSkills.push(random);
         if (random > 6) {
           advancedSkillsAssigned += 1;
         }
