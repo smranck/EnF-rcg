@@ -41,7 +41,7 @@ export default class App extends React.Component {
   }
 
   static chooseLevel(max = 20) {
-    return Math.ceil(Math.random() * max) + 1;
+    return Math.ceil(Math.random() * max);
   }
 
   // returns an array of attribute values in a random order
@@ -178,7 +178,7 @@ export default class App extends React.Component {
       }
     } else {
       // this is the pick at random version
-      assignedClass = classes[Math.floor(Math.random() * 20) + 1];
+      assignedClass = classes[Math.ceil(Math.random() * 20)];
     }
     // NOTE: LICHES and Valkyrs DO IT ALL
   }
