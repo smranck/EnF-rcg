@@ -126,6 +126,7 @@ export default class App extends React.Component {
 
     let assignedClass;
     // Race is only given if native is desired. Could later weight native classes.
+    // race prop such that [raceNumber, 'race']
     if (race[0] < 4) {
       // there are 4 possibilities
       let random = Math.floor(Math.random() * 4);
@@ -182,12 +183,23 @@ export default class App extends React.Component {
     // NOTE: LICHES and Valkyrs DO IT ALL
   }
 
-  // function to randomly assign skills
-  static chooseSkills(level, modifier) {
+  // function to randomly assign skills. Returns an object.
+  static chooseSkills(level, modifier = 0) {
+    let skills = {};
+    let random = Math.ceil(Math.random() * 6);
+    skills[random] = random;
+    while (skills[random]) {
+      Math.ceil(Math.random() * 6);
+    }
+    skills[random] = random;
+    return skills;
+
     /*
     Each class has the same number of skills
     number of skills depends on level
     Only basics can be assigned up to a certain threshold
+    there are 6 basics, 7 advanced, 2 dailys for each class
+    plus inherents
     */
   }
 
