@@ -41,7 +41,7 @@ export default class App extends React.Component {
   }
 
   static chooseLevel(max = 20) {
-    return Math.ceil(Math.random() * max);
+    return Math.max(Math.ceil(Math.random() * max), 1);
   }
 
   // returns an array of attribute values in a random order
@@ -69,13 +69,16 @@ export default class App extends React.Component {
   }
 
   // function to choose traits randomly. Returns an array.
-  static chooseTraits(level, hardworking) {
+  static chooseTraits(level, hardworking, nativeHuman) {
     let number = 2 + Math.floor(level / 7);
     if (level === 20) {
       number += 1;
     }
     if (hardworking) {
       number += 2;
+    }
+    if (nativeHuman) {
+      number += 1;
     }
     let traits = [];
     let savant = false;
@@ -181,26 +184,65 @@ export default class App extends React.Component {
       assignedClass = classes[Math.ceil(Math.random() * 20)];
     }
     // NOTE: LICHES and Valkyrs DO IT ALL
+    return assignedClass;
   }
 
   // function to randomly assign skills. Returns an object.
+  // eventually handle secondary classes
   static chooseSkills(level, modifier = 0) {
+    // totalSkillCount reflects total skills needed
+    let totalSkillCount = 2;
+    let totalSkillsAssigned = 0;
+    let advancedSkillsAssigned = 0;
+    totalSkillCount += modifier;
+    // a skill is gained every odd level other than level 1
+    if (level > 2) {
+      totalSkillCount += level % 2;
+    }
+
     let skills = {};
+
+    // if all skills, assign all skills
+    if (totalSkillCount === 15) {
+      for (let i = 1; i < 16; i += 1) {
+        // it will eventually be classSkills[i];
+        skills[i] = i;
+      }
+      return skills;
+    }
+
     let random = Math.ceil(Math.random() * 6);
+    // assign the initial skill
     skills[random] = random;
+    // create and assign the second skill
     while (skills[random]) {
-      Math.ceil(Math.random() * 6);
+      random = Math.ceil(Math.random() * 6);
     }
     skills[random] = random;
-    return skills;
+    totalSkillsAssigned += 2;
 
-    /*
-    Each class has the same number of skills
-    number of skills depends on level
-    Only basics can be assigned up to a certain threshold
-    there are 6 basics, 7 advanced, 2 dailys for each class
-    plus inherents
-    */
+    // if more skills are needed, up to 4, they could be advanced skills
+    if (totalSkillCount > 2) {
+      // assign skills until the correct total have been assigned
+      while (totalSkillsAssigned < totalSkillCount) {
+        // create a random value that hasn't been assigned yet
+        while (skills[random]) {
+          if (advancedSkillsAssigned >= 2) {
+            // dailies are available after 2 advanced skills are assigned
+            random = Math.ceil(Math.random() * 15);
+          } else {
+            random = Math.ceil(Math.random() * 13);
+          }
+        }
+        skills[random] = random;
+        totalSkillsAssigned += 1;
+        if (random > 6) {
+          advancedSkillsAssigned += 1;
+        }
+      }
+    }
+
+    return skills;
   }
 
   // function to assign attribute valuess to the correct attributes
