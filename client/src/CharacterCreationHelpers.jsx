@@ -312,8 +312,10 @@ module.exports = {
   chooseRace,
   chooseSkills,
   chooseTraits,
+  classList,
   createAttributes,
   createQualities,
   logToConsole,
+  nativeClasses,
   rollDice,
 };
