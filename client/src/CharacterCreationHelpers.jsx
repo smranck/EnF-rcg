@@ -21,6 +21,23 @@ const classList = {
   20: 'Twilight Sentry',
 };
 
+const nativeClasses = {
+  Arkhan: [1, 2, 3, 4],
+  Equirion: [5, 6, 7, 8],
+  Fibblan: [9, 10, 11, 12],
+  Human: [13, 14, 15, 16],
+  Iquoran: [5, 6, 7, 8, 13, 14, 15, 16, 17, 18],
+  Khibblan: [1, 2, 3, 4, 9, 10, 11, 12, 19, 20],
+  Chezan: [9, 14, 10, 16, 12, 20],
+  Cubi: [5, 6, 10, 11, 17, 20],
+  Felia: [2, 14, 19, 4, 15, 18],
+  Jarrith: [1, 9, 3, 11, 19, 4],
+  Merfolk: [1, 7, 13, 15, 16, 18],
+  'True Banshee': [5, 6, 7, 8, 13, 17],
+  Lich: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+  'Valkyr Aspect': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
+};
+
 const logToConsole = () => {
   console.log('Welcome to slack-casa!');
 };
@@ -127,62 +144,29 @@ const chooseTraits = (level, hardworking, nativeHuman) => {
 // function to randomly assign a class. Race should be an array
 const chooseClass = (race = false) => {
   let assignedClass;
+  let randomNumber;
   // Race is only given if native is desired. Could later weight native classes.
   // race prop such that [raceNumber, 'race']
   if (race[0] < 4) {
     // there are 4 possibilities
-    let random = Math.floor(Math.random() * 4);
-    if (race[1] === 'Arkhan') {
-      let nativeClasses = [1, 2, 3, 4];
-      assignedClass = classList[nativeClasses[random]];
-    } else if (race[1] === 'Equirion') {
-      let nativeClasses = [5, 6, 7, 8];
-      assignedClass = classList[nativeClasses[random]];
-    } else if (race[1] === 'Fibblan') {
-      let nativeClasses = [9, 10, 11, 12];
-      assignedClass = classList[nativeClasses[random]];
-    } else if (race[1] === 'Human') {
-      let nativeClasses = [13, 14, 15, 16];
-      assignedClass = classList[nativeClasses[random]];
-    }
+    randomNumber = Math.floor(Math.random() * 4);
   } else if (race[0] < 6) {
     // 10 possibilities
-    let random = Math.floor(Math.random() * 10);
-    if (race[1] === 'Iquoran') {
-      let nativeClasses = [5, 6, 7, 8, 13, 14, 15, 16, 17, 18];
-      assignedClass = classList[nativeClasses[random]];
-      //
-    } else if (race[1] === 'Khibblan') {
-      let nativeClasses = [1, 2, 3, 4, 9, 10, 11, 12, 19, 20];
-      assignedClass = classList[nativeClasses[random]];
-    }
+    randomNumber = Math.floor(Math.random() * 10);
   } else if (race) {
     // there are 6 possibilities
-    let random = Math.floor(Math.random() * 6);
-    if (race[1] === 'Chezan') {
-      let nativeClasses = [9, 14, 10, 16, 12, 20];
-      assignedClass = classList[nativeClasses[random]];
-    } else if (race[1] === 'Cubi') {
-      let nativeClasses = [5, 6, 10, 11, 17, 20];
-      assignedClass = classList[nativeClasses[random]];
-    } else if (race[1] === 'Felia') {
-      let nativeClasses = [2, 14, 19, 4, 15, 18];
-      assignedClass = classList[nativeClasses[random]];
-    } else if (race[1] === 'Jarrith') {
-      let nativeClasses = [1, 9, 3, 11, 19, 4];
-      assignedClass = classList[nativeClasses[random]];
-    } else if (race[1] === 'Merfolk') {
-      let nativeClasses = [1, 7, 13, 15, 16, 18];
-      assignedClass = classList[nativeClasses[random]];
-    } else if (race[1] === 'True Banshee') {
-      let nativeClasses = [5, 6, 7, 8, 13, 17];
-      assignedClass = classList[nativeClasses[random]];
-    }
+    randomNumber = Math.floor(Math.random() * 6);
   } else {
     // this is the pick at random version
-    assignedClass = classList[Math.ceil(Math.random() * 20)];
+    randomNumber = Math.ceil(Math.random() * 20);
   }
   // NOTE: LICHES and Valkyrs DO IT ALL
+  if (race) {
+    assignedClass = classList[nativeClasses[race[1]][randomNumber]];
+  } else {
+    assignedClass = classList[randomNumber];
+  }
+
   return assignedClass;
 };
 
@@ -291,7 +275,7 @@ const assignQualities = (qualityValuesArray, ordered, obs = 10, char = 10, wis =
   let qualities = ['obs', 'char', 'wis'];
   let qualityValues = qualityValuesArray.slice();
 
-  // if preference was indicated, the arrays must be sorteds
+  // if preference was indicated, the arrays must be sorted
   if (ordered) {
     qualityValues.sort();
     qualities.sort((a, b) => values[a] - values[b]);
@@ -309,21 +293,6 @@ const checkForNativeClass = (race, characterClass) => {
   if (race === 'Lich' || race === 'Valkyr Aspect') {
     return true;
   }
-
-  const nativeClasses = {
-    Arkhan: [1, 2, 3, 4],
-    Equirion: [5, 6, 7, 8],
-    Fibblan: [9, 10, 11, 12],
-    Human: [13, 14, 15, 16],
-    Iquoran: [5, 6, 7, 8, 13, 14, 15, 16, 17, 18],
-    Khibblan: [1, 2, 3, 4, 9, 10, 11, 12, 19, 20],
-    Chezan: [9, 14, 10, 16, 12, 20],
-    Cubi: [5, 6, 10, 11, 17, 20],
-    Felia: [2, 14, 19, 4, 15, 18],
-    Jarrith: [1, 9, 3, 11, 19, 4],
-    Merfolk: [1, 7, 13, 15, 16, 18],
-    'True Banshee': [5, 6, 7, 8, 13, 17],
-  };
 
   let isNative = false;
   for (let i = 0; i < nativeClasses[race].length; i += 1) {
