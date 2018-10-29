@@ -1,3 +1,26 @@
+const classList = {
+  1: 'Artillery Jockey',
+  2: 'Crush Avatar',
+  3: 'Doom Harbinger',
+  4: 'Infernal Reaper',
+  5: 'Arcane Ranger',
+  6: 'Blood Letterer',
+  7: 'Cross Assailant',
+  8: 'Essence Abolisher',
+  9: 'Divine Sentinel',
+  10: 'Flow Assimilator',
+  11: 'Flow Rupturer',
+  12: 'Soul Morpher',
+  13: 'Crusade Maestro',
+  14: 'Empyreal Ronin',
+  15: 'Noble Gallant',
+  16: 'Runic Chevalier',
+  17: 'Mystic Gunslinger',
+  18: 'Resolute Champion',
+  19: 'Glorious Hunter',
+  20: 'Twilight Sentry',
+};
+
 const logToConsole = () => {
   console.log('Welcome to slack-casa!');
 };
@@ -103,29 +126,6 @@ const chooseTraits = (level, hardworking, nativeHuman) => {
 
 // function to randomly assign a class. Race should be an array
 const chooseClass = (race = false) => {
-  const classes = {
-    1: 'Artillery Jockey',
-    2: 'Crush Avatar',
-    3: 'Doom Harbinger',
-    4: 'Infernal Reaper',
-    5: 'Arcane Ranger',
-    6: 'Blood Letterer',
-    7: 'Cross Assailant',
-    8: 'Essence Abolisher',
-    9: 'Divine Sentinel',
-    10: 'Flow Assimilator',
-    11: 'Flow Rupturer',
-    12: 'Soul Morpher',
-    13: 'Crusade Maestro',
-    14: 'Empyreal Ronin',
-    15: 'Noble Gallant',
-    16: 'Runic Chevalier',
-    17: 'Mystic Gunslinger',
-    18: 'Resolute Champion',
-    19: 'Glorious Hunter',
-    20: 'Twilight Sentry',
-  };
-
   let assignedClass;
   // Race is only given if native is desired. Could later weight native classes.
   // race prop such that [raceNumber, 'race']
@@ -134,53 +134,53 @@ const chooseClass = (race = false) => {
     let random = Math.floor(Math.random() * 4);
     if (race[1] === 'Arkhan') {
       let nativeClasses = [1, 2, 3, 4];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     } else if (race[1] === 'Equirion') {
       let nativeClasses = [5, 6, 7, 8];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     } else if (race[1] === 'Fibblan') {
       let nativeClasses = [9, 10, 11, 12];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     } else if (race[1] === 'Human') {
       let nativeClasses = [13, 14, 15, 16];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     }
   } else if (race[0] < 6) {
     // 10 possibilities
     let random = Math.floor(Math.random() * 10);
     if (race[1] === 'Iquoran') {
       let nativeClasses = [5, 6, 7, 8, 13, 14, 15, 16, 17, 18];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
       //
     } else if (race[1] === 'Khibblan') {
       let nativeClasses = [1, 2, 3, 4, 9, 10, 11, 12, 19, 20];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     }
   } else if (race) {
     // there are 6 possibilities
     let random = Math.floor(Math.random() * 6);
     if (race[1] === 'Chezan') {
       let nativeClasses = [9, 14, 10, 16, 12, 20];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     } else if (race[1] === 'Cubi') {
       let nativeClasses = [5, 6, 10, 11, 17, 20];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     } else if (race[1] === 'Felia') {
       let nativeClasses = [2, 14, 19, 4, 15, 18];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     } else if (race[1] === 'Jarrith') {
       let nativeClasses = [1, 9, 3, 11, 19, 4];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     } else if (race[1] === 'Merfolk') {
       let nativeClasses = [1, 7, 13, 15, 16, 18];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     } else if (race[1] === 'True Banshee') {
       let nativeClasses = [5, 6, 7, 8, 13, 17];
-      assignedClass = classes[nativeClasses[random]];
+      assignedClass = classList[nativeClasses[random]];
     }
   } else {
     // this is the pick at random version
-    assignedClass = classes[Math.ceil(Math.random() * 20)];
+    assignedClass = classList[Math.ceil(Math.random() * 20)];
   }
   // NOTE: LICHES and Valkyrs DO IT ALL
   return assignedClass;
@@ -309,28 +309,6 @@ const checkForNativeClass = (race, characterClass) => {
   if (race === 'Lich' || race === 'Valkyr Aspect') {
     return true;
   }
-  const classes = {
-    1: 'Artillery Jockey',
-    2: 'Crush Avatar',
-    3: 'Doom Harbinger',
-    4: 'Infernal Reaper',
-    5: 'Arcane Ranger',
-    6: 'Blood Letterer',
-    7: 'Cross Assailant',
-    8: 'Essence Abolisher',
-    9: 'Divine Sentinel',
-    10: 'Flow Assimilator',
-    11: 'Flow Rupturer',
-    12: 'Soul Morpher',
-    13: 'Crusade Maestro',
-    14: 'Empyreal Ronin',
-    15: 'Noble Gallant',
-    16: 'Runic Chevalier',
-    17: 'Mystic Gunslinger',
-    18: 'Resolute Champion',
-    19: 'Glorious Hunter',
-    20: 'Twilight Sentry',
-  };
 
   const nativeClasses = {
     Arkhan: [1, 2, 3, 4],
@@ -349,7 +327,7 @@ const checkForNativeClass = (race, characterClass) => {
 
   let isNative = false;
   for (let i = 0; i < nativeClasses[race].length; i += 1) {
-    if (classes[nativeClasses[race][i]] === characterClass) {
+    if (classList[nativeClasses[race][i]] === characterClass) {
       isNative = true;
     }
   }
