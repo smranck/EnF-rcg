@@ -103,7 +103,7 @@ const chooseTraits = (level, hardworking, nativeHuman) => {
 
 // function to randomly assign a class. Race should be an array
 const chooseClass = (race = false) => {
-  let classes = {
+  const classes = {
     1: 'Artillery Jockey',
     2: 'Crush Avatar',
     3: 'Doom Harbinger',
@@ -305,9 +305,61 @@ const assignQualities = (qualityValuesArray, ordered, obs = 10, char = 10, wis =
   return values;
 };
 
+const checkForNativeClass = (race, characterClass) => {
+  if (race === 'Lich' || race === 'Valkyr Aspect') {
+    return true;
+  }
+  const classes = {
+    1: 'Artillery Jockey',
+    2: 'Crush Avatar',
+    3: 'Doom Harbinger',
+    4: 'Infernal Reaper',
+    5: 'Arcane Ranger',
+    6: 'Blood Letterer',
+    7: 'Cross Assailant',
+    8: 'Essence Abolisher',
+    9: 'Divine Sentinel',
+    10: 'Flow Assimilator',
+    11: 'Flow Rupturer',
+    12: 'Soul Morpher',
+    13: 'Crusade Maestro',
+    14: 'Empyreal Ronin',
+    15: 'Noble Gallant',
+    16: 'Runic Chevalier',
+    17: 'Mystic Gunslinger',
+    18: 'Resolute Champion',
+    19: 'Glorious Hunter',
+    20: 'Twilight Sentry',
+  };
+
+  const nativeClasses = {
+    Arkhan: [1, 2, 3, 4],
+    Equirion: [5, 6, 7, 8],
+    Fibblan: [9, 10, 11, 12],
+    Human: [13, 14, 15, 16],
+    Iquoran: [5, 6, 7, 8, 13, 14, 15, 16, 17, 18],
+    Khibblan: [1, 2, 3, 4, 9, 10, 11, 12, 19, 20],
+    Chezan: [9, 14, 10, 16, 12, 20],
+    Cubi: [5, 6, 10, 11, 17, 20],
+    Felia: [2, 14, 19, 4, 15, 18],
+    Jarrith: [1, 9, 3, 11, 19, 4],
+    Merfolk: [1, 7, 13, 15, 16, 18],
+    'True Banshee': [5, 6, 7, 8, 13, 17],
+  };
+
+  let isNative = false;
+  for (let i = 0; i < nativeClasses[race].length; i += 1) {
+    if (classes[nativeClasses[race][i]] === characterClass) {
+      isNative = true;
+    }
+  }
+  return isNative;
+};
+
 module.exports = {
   assignAttributes,
   assignQualities,
+  checkForNativeClass,
   chooseClass,
   chooseLevel,
   chooseRace,
