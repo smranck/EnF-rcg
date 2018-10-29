@@ -38,6 +38,65 @@ const nativeClasses = {
   'Valkyr Aspect': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
 };
 
+const traitList = [
+  'Savant of All Trades',
+  'Adept Chef',
+  'Adrenaline Rush',
+  'Appraisal',
+  'Bad Luck Reversal',
+  'Blindsight',
+  'Brilliant Mind',
+  'Clever Maneuver',
+  'Close Combat Expertise',
+  'Cosmic Balance',
+  'Cosmic Imbalance',
+  'Dual Wielder',
+  'Dueling Expert',
+  'Energy Efficient',
+  'Fast Metabolism',
+  'Focused Eyes',
+  'Giant Slayer',
+  'Group Hugger',
+  'Heavy Hitter',
+  'Helping Hand',
+  'Immovable Object',
+  'Legend Seeker',
+  'Light Traveler',
+  'Locksmith',
+  'Maximize Portential',
+  'Median Adventurer',
+  'Monster Hunter',
+  'Naturally Gifted',
+  'Nimble Body',
+  'Nocturnal',
+  'Packrat',
+  'Performer',
+  'Premonition',
+  'Provoking Presence',
+  'Quick Healer',
+  'Ranged Combat Expertise',
+  'Reckless Abandon',
+  'Scaling',
+  'Scaredy Cat',
+  'Second Wind',
+  'Situational Awareness',
+  'Skillful Power Grip',
+  'Sleight of Hand',
+  'Solid Defence',
+  'Spellcrafter',
+  'Strength in Camaraderie',
+  'Tractical Leader',
+  'Thief',
+  'Tracker',
+  'Trap Disarming',
+  'Unusually Lucky',
+  'Unstoppable Force',
+  'Unyielding',
+  'Vigorous Spirit',
+  'Well Read / Travelled',
+  'The Will to Live',
+];
+
 const logToConsole = () => {
   console.log('Welcome to slack-casa!');
 };
@@ -108,7 +167,7 @@ const createQualities = () => {
 };
 
 // function to choose traits randomly. Returns an array.
-const chooseTraits = (level, hardworking, nativeHuman) => {
+const chooseTraits = (level, hardworking = false, nativeHuman = false) => {
   let number = 2 + Math.floor(level / 7);
   if (level === 20) {
     number += 1;
@@ -125,17 +184,17 @@ const chooseTraits = (level, hardworking, nativeHuman) => {
   let hash = {};
   // if savant, there can be no other traits
   while (traits.length < number && !savant) {
-    let whichTrait = Math.floor(Math.random() * 56);
+    let whichTrait = Math.floor(Math.random() * traitList.length);
     if (hash[whichTrait]) {
       console.log('Dupe traits');
     } else if (whichTrait) {
       // not 0. 0 is savant
-      traits.push(whichTrait);
+      traits.push(traitList[whichTrait]);
       hash[whichTrait] = true;
     } else {
       // savant case
       savant = true;
-      traits = [0];
+      traits = ['Savant of All Trades'];
     }
   }
   return traits;
@@ -318,4 +377,5 @@ module.exports = {
   logToConsole,
   nativeClasses,
   rollDice,
+  traitList,
 };
