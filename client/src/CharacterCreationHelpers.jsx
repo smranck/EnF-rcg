@@ -148,7 +148,7 @@ const createAttributes = () => {
 
   for (let i = 0; i < 6; i += 1) {
     let roll = rollDice(3, 6);
-    attributes.push(roll[2] + roll[3]);
+    attributes.push(roll[1] + roll[2]);
   }
 
   return attributes;
@@ -160,7 +160,7 @@ const createQualities = () => {
 
   for (let i = 0; i < 3; i += 1) {
     let roll = rollDice(3, 6);
-    qualities.push(roll[2] + roll[3]);
+    qualities.push(roll[1] + roll[2]);
   }
 
   return qualities;
@@ -354,6 +354,25 @@ const checkForNativeClass = (race, characterClass) => {
   return isNative;
 };
 
+const createCharacter = () => {
+  let level = chooseLevel();
+  let race = chooseRace();
+  let characterClass = chooseClass();
+  let native = checkForNativeClass(race[1], characterClass);
+  let traits = chooseTraits(level, false, native && characterClass[1] === 'Human');
+  let qualities = assignQualities();
+  let attributes = assignAttributes();
+  let character = {
+    level,
+    race: race[1],
+    characterClass,
+    traits,
+    qualities,
+    attributes,
+  };
+  return character;
+};
+
 module.exports = {
   assignAttributes,
   assignQualities,
@@ -365,6 +384,7 @@ module.exports = {
   chooseTraits,
   classList,
   createAttributes,
+  createCharacter,
   createQualities,
   logToConsole,
   nativeClasses,
