@@ -167,7 +167,7 @@ const createQualities = () => {
 };
 
 // function to choose traits randomly. Returns an array of traits.
-const chooseTraits = (level = 1, hardworking = false, nativeHuman = false) => {
+const chooseTraits = (level = 1, hardworking = false, nativeClassBonus = false) => {
   let number = 2 + Math.floor(level / 7);
   if (level === 20) {
     number += 1;
@@ -175,7 +175,7 @@ const chooseTraits = (level = 1, hardworking = false, nativeHuman = false) => {
   if (hardworking) {
     number += 2;
   }
-  if (nativeHuman) {
+  if (nativeClassBonus) {
     number += 1;
   }
   let traits = [];
@@ -399,7 +399,12 @@ const createCharacter = (
   let race = chooseRace(originalsOnly);
   let characterClass = chooseClass(nativeRace);
   let native = checkForNativeClass(race[1], characterClass);
-  let traits = chooseTraits(level, false, native && characterClass[1] === 'Human');
+  let nativeClassBonus = native ? provideNativeClassBonus(characterClass) : false;
+  let traits = chooseTraits(
+    level,
+    characterClass === 'Human',
+    nativeClassBonus === 'Ancestral Pride' || nativeClassBonus === 'Adaptation',
+  );
   let qualities = assignQualities(rankQualities, obs, char, wis);
   let attributes = assignAttributes(rankAttributes, str, spr, vit, dex, agi);
   let character = {
