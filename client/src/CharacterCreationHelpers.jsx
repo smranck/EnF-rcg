@@ -354,14 +354,28 @@ const checkForNativeClass = (race, characterClass) => {
   return isNative;
 };
 
-const createCharacter = () => {
-  let level = chooseLevel();
-  let race = chooseRace();
-  let characterClass = chooseClass();
+const createCharacter = (
+  maxLevel = Math.ceil(Math.random() * 20),
+  originalsOnly = false,
+  nativeRace = false,
+  rankQualities = false,
+  obs = 1,
+  char = 1,
+  wis = 1,
+  rankAttributes = false,
+  str = 1,
+  spr = 1,
+  vit = 1,
+  dex = 1,
+  agi = 1,
+) => {
+  let level = chooseLevel(maxLevel);
+  let race = chooseRace(originalsOnly);
+  let characterClass = chooseClass(nativeRace);
   let native = checkForNativeClass(race[1], characterClass);
   let traits = chooseTraits(level, false, native && characterClass[1] === 'Human');
-  let qualities = assignQualities();
-  let attributes = assignAttributes();
+  let qualities = assignQualities(rankQualities, obs, char, wis);
+  let attributes = assignAttributes(rankAttributes, str, spr, vit, dex, agi);
   let character = {
     level,
     race: race[1],
