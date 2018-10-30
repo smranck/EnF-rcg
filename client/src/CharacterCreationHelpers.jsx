@@ -167,7 +167,7 @@ const createQualities = () => {
 };
 
 // function to choose traits randomly. Returns an array of traits.
-const chooseTraits = (level, hardworking = false, nativeHuman = false) => {
+const chooseTraits = (level = 1, hardworking = false, nativeHuman = false) => {
   let number = 2 + Math.floor(level / 7);
   if (level === 20) {
     number += 1;
@@ -231,7 +231,7 @@ const chooseClass = (race = false) => {
 
 // function to randomly assign skills. Returns an object.
 // eventually handle secondary classes
-const chooseSkills = (level, modifier = 0) => {
+const chooseSkills = (level = 0, modifier = 0) => {
   // totalSkillCount reflects total skills needed
   let totalSkillCount = 2;
   let assignedSkills = [];
@@ -290,15 +290,7 @@ const chooseSkills = (level, modifier = 0) => {
 
 // function to assign attribute valuess to the correct attributes
 // takes in array of attributes, a bool indicating if preference exists, and preference order
-const assignAttributes = (
-  attributeValuesArray,
-  ordered,
-  str = 10,
-  spr = 10,
-  vit = 10,
-  dex = 10,
-  agi = 10,
-) => {
+const assignAttributes = (ordered = false, str = 10, spr = 10, vit = 10, dex = 10, agi = 10) => {
   // initialize with the preference order
   let values = {
     str,
@@ -308,7 +300,7 @@ const assignAttributes = (
     agi,
   };
   let attributes = ['str', 'spr', 'vit', 'dex', 'agi'];
-  let attributeValues = attributeValuesArray.slice();
+  let attributeValues = createAttributes();
 
   // if preference was indicated:
   if (ordered) {
@@ -329,10 +321,10 @@ const assignAttributes = (
 };
 
 // function to assign the randomly values to qualities
-const assignQualities = (qualityValuesArray, ordered, obs = 10, char = 10, wis = 10) => {
+const assignQualities = (ordered, obs = 10, char = 10, wis = 10) => {
   let values = { obs, char, wis };
   let qualities = ['obs', 'char', 'wis'];
-  let qualityValues = qualityValuesArray.slice();
+  let qualityValues = createQualities();
 
   // if preference was indicated, the arrays must be sorted
   if (ordered) {
