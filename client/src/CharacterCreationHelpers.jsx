@@ -354,6 +354,32 @@ const checkForNativeClass = (race, characterClass) => {
   return isNative;
 };
 
+const provideNativeClassBonus = (characterClass) => {
+  let nativeClassBonuses = {
+    'Artillery Jockey': 'Strongarm Aggression',
+    'Crush Avatar': 'Strongarm Aggression',
+    'Doom Harbinger': 'Strongarm Aggression',
+    'Infernal Reaper': 'Strongarm Aggression',
+    'Arcane Ranger': 'Elegant Speed',
+    'Blood Letterer': 'Elegant Speed',
+    'Cross Assailant': 'Elegant Speed',
+    'Essence Abolisher': 'Elegant Speed',
+    'Divine Sentinel': 'Flow Reserve',
+    'Flow Assimilator': 'Flow Reserve',
+    'Flow Rupturer': 'Flow Reserve',
+    'Soul Morpher': 'Flow Reserve',
+    'Crusade Maestro': 'Adaptation',
+    'Empyreal Ronin': 'Adaptation',
+    'Noble Gallant': 'Adaptation',
+    'Runic Chevalier': 'Adaptation',
+    'Mystic Gunslinger': 'Ancestral Pride',
+    'Resolute Champion': 'Ancestral Pride',
+    'Glorious Hunter': 'Bestial Force',
+    'Twilight Sentry': 'Bestial Force',
+  };
+  return nativeClassBonuses[characterClass];
+};
+
 const createCharacter = (
   maxLevel = Math.ceil(Math.random() * 20),
   originalsOnly = false,
