@@ -166,7 +166,7 @@ const createQualities = () => {
   return qualities;
 };
 
-// function to choose traits randomly. Returns an array.
+// function to choose traits randomly. Returns an array of traits.
 const chooseTraits = (level, hardworking = false, nativeHuman = false) => {
   let number = 2 + Math.floor(level / 7);
   if (level === 20) {
