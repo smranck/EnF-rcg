@@ -37,6 +37,7 @@ export default class App extends React.Component {
     const {
       level, race, characterClass, raceTrait, traits, qualities, attributes,
     } = character;
+    console.log(character);
     let characterGenerated = true;
     this.setState({
       level,
