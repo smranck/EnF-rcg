@@ -5,24 +5,49 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      characterGenerated: false,
-      nativePreference: false,
-      originalClasses: false,
-      maxLevel: 20,
+      // characterGenerated: false,
+      // nativePreference: false,
+      // originalClasses: false,
+      // maxLevel: 20,
+      // level: 1,
+      // race: ['Race Not Assigned', 'Race Not Assigned'],
+      // raceObject: {}, // this will be gotten eventually, won't need race above
+      // class: '',
+      // skills: {},
+      // skillsModifier: 0,
+      // qualities: [],
+      // attributes: [],
+      // str: 10,
+      // spr: 10,
+      // vit: 10,
+      // dex: 10,
+      // agi: 10,
       level: 1,
-      race: ['Race Not Assigned', 'Race Not Assigned'],
-      raceObject: {}, // this will be gotten eventually, won't need race above
-      class: '',
-      skills: {},
-      skillsModifier: 0,
-      qualities: [],
-      attributes: [],
-      str: 10,
-      spr: 10,
-      vit: 10,
-      dex: 10,
-      agi: 10,
+      race: '',
+      raceTrait: [],
+      traits: '',
+      qualities: {},
+      attributes: {},
+      characterGenerated: false,
     };
+  }
+
+  generateCharacter() {
+    let character = Helpers.createCharacter();
+    const {
+      level, race, characterClass, raceTrait, traits, qualities, attributes,
+    } = character;
+    let characterGenerated = true;
+    this.setState({
+      level,
+      race,
+      characterClass,
+      raceTrait,
+      traits,
+      qualities,
+      attributes,
+      characterGenerated,
+    });
   }
 
   render() {
