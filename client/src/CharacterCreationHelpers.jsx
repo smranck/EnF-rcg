@@ -149,6 +149,7 @@ const createAttributes = (minimumTotal = 30) => {
 
   while (sum < minimumTotal) {
     sum = 0;
+    attributes = [];
     for (let i = 1; i < 6; i += 1) {
       let dice = rollDice(3, 6);
       let roll = dice[1] + dice[2];
@@ -156,16 +157,24 @@ const createAttributes = (minimumTotal = 30) => {
       sum += roll;
     }
   }
+
   return attributes;
 };
 
 // returns an array of quality values in a random order
-const createQualities = () => {
+const createQualities = (minimumTotal = 12) => {
   let qualities = [];
+  let sum = 0;
 
-  for (let i = 0; i < 3; i += 1) {
-    let roll = rollDice(3, 6);
-    qualities.push(roll[1] + roll[2]);
+  while (sum < minimumTotal) {
+    sum = 0;
+    qualities = [];
+    for (let i = 0; i < 3; i += 1) {
+      let dice = rollDice(3, 6);
+      let roll = dice[1] + dice[2];
+      qualities.push(roll);
+      sum += roll;
+    }
   }
 
   return qualities;
