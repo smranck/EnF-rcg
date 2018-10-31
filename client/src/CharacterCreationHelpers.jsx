@@ -381,7 +381,7 @@ const provideNativeClassBonus = (characterClass) => {
 };
 
 // function to assign a race trait and the free special trait. Expects a string
-const assignRaceTrait = (race) => {
+const assignRaceTrait = (race, savant = false) => {
   const raceTraits = {
     Arkhan: ['Intimidation', 'Immense Strength', 'Military Training', 'Primal Burst'],
     Equirion: ['Equirion Majesty', 'Exploit Weakness', 'Forest Dweller', 'The Superior Race'],
@@ -424,6 +424,11 @@ const assignRaceTrait = (race) => {
     'True Banshee': 'Ghastly Physiology',
     'Valkyr Aspect': 'Divine Intervention',
   };
+
+  // savant means no race traits
+  if (savant) {
+    return [specialTraits[race], false];
+  }
   // it's 4 for the core 4, 3 for the halfkin,
   let possibleChoices = 4;
   if (race === 'Iquoran' || race === 'Khibblan') {
@@ -458,7 +463,11 @@ const createCharacter = (
     characterClass === 'Human',
     nativeClassBonus === 'Ancestral Pride' || nativeClassBonus === 'Adaptation',
   );
-  let raceTrait = assignRaceTrait(race[1]);
+  let savant = traits.length === 1;
+  if (savant) {
+    nativeClassBonus = false;
+  }
+  let raceTrait = assignRaceTrait(race[1], savant);
   let qualities = assignQualities(rankQualities, obs, char, wis);
   let attributes = assignAttributes(rankAttributes, str, spr, vit, dex, agi);
   let character = {
