@@ -380,8 +380,61 @@ const provideNativeClassBonus = (characterClass) => {
   return nativeClassBonuses[characterClass];
 };
 
+// function to assign a race trait and the free special trait. Expects a string
+const assignRaceTrait = (race) => {
+  const raceTraits = {
+    Arkhan: ['Intimidation', 'Immense Strength', 'Military Training', 'Primal Burst'],
+    Equirion: ['Equirion Majesty', 'Exploit Weakness', 'Forest Dweller', 'The Superior Race'],
+    Fibblan: ['Epansive Mind', 'Flourishing Nutrients', 'Magical Attunement', 'Synthesis'],
+    Human: ['Initiative', 'Intense Discipline', 'Prodigious', 'Tenacity'],
+    Iquoran: [
+      'Accomplished Worker',
+      'Covered Weaknesses',
+      'Halfkin Inheritance',
+      'Talented Wielder',
+    ],
+    Khibblan: ['Acclimated Hide', 'Beastkin Inheritance', 'Exploit Strengths'],
+    Chezan: ['Bloodkin Inheritance', 'Exertive Energy', 'Momentary Lunacy', 'Redirect Exhaustion'],
+    Cubi: ['Dark Embrace', 'Love Tap', 'Magical Aptitude', 'Seductive Appearance'],
+    Felia: ['Felia Reflexes', 'Natural Born Hunters', 'Predatory Quirks', 'Scrappy Fighter'],
+    Jarrith: ['Intimidating Presence', 'Jarrith Breath', 'Jarrith Roar', 'Unrelenting Beast'],
+    Lich: ['Dark Magic', 'Magical Aptitude', 'Touch of Death', 'Unearthly Presence'],
+    Merfolk: ['Hydomancy', 'Juggernaut Upbringing', 'Mage Upbringing', 'Warrior Upbringing'],
+    'True Banshee': ['Death Wail', 'Hypnotic Voice', 'Omen of Death', 'Voice of Inspiration'],
+    'Valkyr Aspect': [
+      "Amandra's Blessings",
+      'Force of Holiness',
+      'Live to Serve',
+      'Path of the Valkyr',
+    ],
+  };
+  const specialTraits = {
+    Arkhan: 'Arkhan Physiology',
+    Equirion: 'Equirion Physiology',
+    Fibblan: 'Fibblan Physiology',
+    Human: 'The Hardworking',
+    Iquoran: 'Iquoran Physiology',
+    Khibblan: 'Khibblan Physiology',
+    Chezan: 'Great Shadow Infection',
+    Cubi: 'Insatiable Lust',
+    Felia: 'Felesian Ancestry',
+    Jarrith: 'Jarrith Psysiology',
+    Lich: 'Phylactery',
+    Merfolk: 'Hydration',
+    'True Banshee': 'Ghastly Physiology',
+    'Valkyr Aspect': 'Divine Intervention',
+  };
+  // it's 4 for the core 4, 3 for the halfkin,
+  let possibleChoices = 4;
+  if (race === 'Iquoran' || race === 'Khibblan') {
+    possibleChoices -= 1;
+  }
+  let random = Math.floor(Math.random() * possibleChoices);
+  return [specialTraits[race], raceTraits[race][random]];
+};
+
 const createCharacter = (
-  maxLevel = Math.ceil(Math.random() * 20),
+  maxLevel = 20,
   originalsOnly = false,
   nativeRace = false,
   rankQualities = false,
@@ -405,12 +458,14 @@ const createCharacter = (
     characterClass === 'Human',
     nativeClassBonus === 'Ancestral Pride' || nativeClassBonus === 'Adaptation',
   );
+  let raceTrait = assignRaceTrait(race[1]);
   let qualities = assignQualities(rankQualities, obs, char, wis);
   let attributes = assignAttributes(rankAttributes, str, spr, vit, dex, agi);
   let character = {
     level,
     race: race[1],
     characterClass,
+    raceTrait,
     traits,
     qualities,
     attributes,
