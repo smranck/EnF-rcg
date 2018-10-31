@@ -143,14 +143,19 @@ const chooseRace = (originalsOnly = false) => {
 const chooseLevel = (max = 20) => Math.max(Math.ceil(Math.random() * max), 1);
 
 // returns an array of attribute values in a random order
-const createAttributes = () => {
+const createAttributes = (minimumTotal = 30) => {
   let attributes = [];
+  let sum = 0;
 
-  for (let i = 0; i < 6; i += 1) {
-    let roll = rollDice(3, 6);
-    attributes.push(roll[1] + roll[2]);
+  while (sum < minimumTotal) {
+    sum = 0;
+    for (let i = 1; i < 6; i += 1) {
+      let dice = rollDice(3, 6);
+      let roll = dice[1] + dice[2];
+      attributes.push(roll);
+      sum += roll;
+    }
   }
-
   return attributes;
 };
 
