@@ -63,8 +63,13 @@ export default class App extends React.Component {
         {characterGenerated ? (
           <div>This is where your character would render!</div>
         ) : (
-          <div>Once you make a character, it will render here!</div>
+          <div>Check the console for your new character</div>
         )}
+        <button type="submit" onClick={() => this.generateCharacter()}>
+          {' '}
+          Create a new Character
+          {' '}
+        </button>
       </div>
     );
   }
