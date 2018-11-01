@@ -260,7 +260,7 @@ const chooseSkills = (level = 1, modifier = 0) => {
   totalSkillCount += modifier;
   // a skill is gained every odd level other than level 1
   if (level > 2) {
-    totalSkillCount += level % 2;
+    totalSkillCount += Math.floor((level - 1) / 2);
   }
 
   let skills = {};
