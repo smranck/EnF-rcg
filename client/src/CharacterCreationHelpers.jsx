@@ -143,7 +143,7 @@ const chooseRace = (originalsOnly = false) => {
 const chooseLevel = (max = 20) => Math.max(Math.ceil(Math.random() * max), 1);
 
 // returns an array of attribute values in a random order
-const createAttributes = (minimumTotal = 30) => {
+const createAttributes = (savant = false, minimumTotal = 30) => {
   let attributes = [];
   let sum = 0;
 
@@ -153,6 +153,9 @@ const createAttributes = (minimumTotal = 30) => {
     for (let i = 1; i < 6; i += 1) {
       let dice = rollDice(3, 6);
       let roll = dice[1] + dice[2];
+      if (savant) {
+        roll += 1;
+      }
       attributes.push(roll);
       sum += roll;
     }
@@ -162,7 +165,8 @@ const createAttributes = (minimumTotal = 30) => {
 };
 
 // returns an array of quality values in a random order
-const createQualities = (minimumTotal = 12) => {
+// minimumTotal is like a mercy rule of sorts
+const createQualities = (savant = false, minimumTotal = 12) => {
   let qualities = [];
   let sum = 0;
 
@@ -172,6 +176,9 @@ const createQualities = (minimumTotal = 12) => {
     for (let i = 0; i < 3; i += 1) {
       let dice = rollDice(3, 6);
       let roll = dice[1] + dice[2];
+      if (savant) {
+        roll += 1;
+      }
       qualities.push(roll);
       sum += roll;
     }
@@ -243,7 +250,7 @@ const chooseClass = (race = false) => {
   return assignedClass;
 };
 
-// function to randomly assign skills. Returns a sorted array.
+// function to randomly assign skills. Returns a sorted array. Skills are 1 indexed
 // eventually handle secondary classes
 const chooseSkills = (level = 1, modifier = 0) => {
   // totalSkillCount reflects total skills needed
@@ -299,14 +306,22 @@ const chooseSkills = (level = 1, modifier = 0) => {
     }
   }
 
-  assignedSkills.sort();
+  assignedSkills.sort((a, b) => a - b);
 
   return assignedSkills;
 };
 
 // function to assign attribute valuess to the correct attributes
 // takes in array of attributes, a bool indicating if preference exists, and preference order
-const assignAttributes = (ordered = false, str = 10, spr = 10, vit = 10, dex = 10, agi = 10) => {
+const assignAttributes = (
+  ordered = false,
+  str = 10,
+  spr = 10,
+  vit = 10,
+  dex = 10,
+  agi = 10,
+  savant = false,
+) => {
   // initialize with the preference order
   let values = {
     str,
@@ -316,7 +331,7 @@ const assignAttributes = (ordered = false, str = 10, spr = 10, vit = 10, dex = 1
     agi,
   };
   let attributes = ['str', 'spr', 'vit', 'dex', 'agi'];
-  let attributeValues = createAttributes();
+  let attributeValues = createAttributes(savant);
 
   // if preference was indicated:
   if (ordered) {
@@ -340,7 +355,7 @@ const assignAttributes = (ordered = false, str = 10, spr = 10, vit = 10, dex = 1
 const assignQualities = (ordered, obs = 10, char = 10, wis = 10, savant = false) => {
   let values = { obs, char, wis };
   let qualities = ['obs', 'char', 'wis'];
-  let qualityValues = createQualities();
+  let qualityValues = createQualities(savant);
 
   // if preference was indicated, the arrays must be sorted
   if (ordered) {
@@ -485,7 +500,7 @@ const createCharacter = (
   }
   let raceTrait = assignRaceTrait(race[1], savant);
   let qualities = assignQualities(rankQualities, obs, char, wis, savant);
-  let attributes = assignAttributes(rankAttributes, str, spr, vit, dex, agi);
+  let attributes = assignAttributes(rankAttributes, str, spr, vit, dex, agi, savant);
   let skills = chooseSkills(level);
   let character = {
     level,
