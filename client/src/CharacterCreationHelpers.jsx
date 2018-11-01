@@ -243,9 +243,9 @@ const chooseClass = (race = false) => {
   return assignedClass;
 };
 
-// function to randomly assign skills. Returns an object.
+// function to randomly assign skills. Returns a sorted array.
 // eventually handle secondary classes
-const chooseSkills = (level = 0, modifier = 0) => {
+const chooseSkills = (level = 1, modifier = 0) => {
   // totalSkillCount reflects total skills needed
   let totalSkillCount = 2;
   let assignedSkills = [];
@@ -299,7 +299,9 @@ const chooseSkills = (level = 0, modifier = 0) => {
     }
   }
 
-  return skills;
+  assignedSkills.sort();
+
+  return assignedSkills;
 };
 
 // function to assign attribute valuess to the correct attributes
@@ -334,8 +336,8 @@ const assignAttributes = (ordered = false, str = 10, spr = 10, vit = 10, dex = 1
   return values;
 };
 
-// function to assign the randomly values to qualities
-const assignQualities = (ordered, obs = 10, char = 10, wis = 10) => {
+// function to assign the randomly values to qualities. Returns an Object
+const assignQualities = (ordered, obs = 10, char = 10, wis = 10, savant = false) => {
   let values = { obs, char, wis };
   let qualities = ['obs', 'char', 'wis'];
   let qualityValues = createQualities();
@@ -482,13 +484,15 @@ const createCharacter = (
     nativeClassBonus = false;
   }
   let raceTrait = assignRaceTrait(race[1], savant);
-  let qualities = assignQualities(rankQualities, obs, char, wis);
+  let qualities = assignQualities(rankQualities, obs, char, wis, savant);
   let attributes = assignAttributes(rankAttributes, str, spr, vit, dex, agi);
+  let skills = chooseSkills(level);
   let character = {
     level,
     race: race[1],
     characterClass,
     raceTrait,
+    skills,
     traits,
     qualities,
     attributes,
@@ -497,20 +501,6 @@ const createCharacter = (
 };
 
 module.exports = {
-  assignAttributes,
-  assignQualities,
-  checkForNativeClass,
-  chooseClass,
-  chooseLevel,
-  chooseRace,
-  chooseSkills,
-  chooseTraits,
-  classList,
-  createAttributes,
   createCharacter,
-  createQualities,
   logToConsole,
-  nativeClasses,
-  rollDice,
-  traitList,
 };
