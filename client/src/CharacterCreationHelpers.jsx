@@ -469,6 +469,16 @@ const assignRaceTrait = (race, savant = false) => {
   return [specialTraits[race], raceTraits[race][random]];
 };
 
+// Function to assign a profession. Returns an array
+const assignProfession = (valkyr = false, likelihood = 50) => {
+  /*
+  will assign a profession.
+  If valkyr and cleric chosen, overwrite.
+  Otherwise, add in addition
+  Likelihood will be chance out of 100 of being assigned a trait.
+  */
+};
+
 const createCharacter = (
   maxLevel = 20,
   originalsOnly = false,
