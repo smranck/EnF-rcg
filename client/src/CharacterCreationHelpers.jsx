@@ -371,6 +371,7 @@ const assignQualities = (ordered, obs = 10, char = 10, wis = 10, savant = false)
   return values;
 };
 
+// function to check for native class. Returns a boolean.
 const checkForNativeClass = (race, characterClass) => {
   if (race === 'Lich' || race === 'Valkyr Aspect') {
     return true;
@@ -385,6 +386,7 @@ const checkForNativeClass = (race, characterClass) => {
   return isNative;
 };
 
+// function to provide Native Class Bonus as needed. Returns a string
 const provideNativeClassBonus = (characterClass) => {
   let nativeClassBonuses = {
     'Artillery Jockey': 'Strongarm Aggression',
@@ -529,7 +531,7 @@ const createCharacter = (
   let nativeClassBonus = native ? provideNativeClassBonus(characterClass) : false;
   let traits = chooseTraits(
     level,
-    characterClass === 'Human',
+    race[1] === 'Human',
     nativeClassBonus === 'Ancestral Pride' || nativeClassBonus === 'Adaptation',
   );
   let savant = traits.length === 1;
@@ -559,5 +561,3 @@ module.exports = {
   createCharacter,
   logToConsole,
 };
-
-
