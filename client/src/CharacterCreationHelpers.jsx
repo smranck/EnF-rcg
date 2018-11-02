@@ -143,10 +143,11 @@ const chooseRace = (originalsOnly = false) => {
 const chooseLevel = (max = 20) => Math.max(Math.ceil(Math.random() * max), 1);
 
 // returns an array of attribute values in a random order
-const createAttributes = (savant = false, minimumTotal = 30) => {
+const createAttributes = (savant = false, minimumTotal = 40, defaultStats = true) => {
   let attributes = [];
   let sum = 0;
 
+  // when generating values, make sure they are above a mercy line
   while (sum < minimumTotal) {
     sum = 0;
     attributes = [];
@@ -158,6 +159,39 @@ const createAttributes = (savant = false, minimumTotal = 30) => {
       }
       attributes.push(roll);
       sum += roll;
+    }
+  }
+
+  // default stats are minimum 4, maximum 12, total of 40
+  if (defaultStats) {
+    // first, set all attributes such that 4 <= attribute <= 12
+    for (let i = 0; i < attributes.length; i += 1) {
+      while (attributes[i] < 4) {
+        attributes[i] += 1;
+        sum += 1;
+      }
+      // this should be impossible, here for completeness
+      while (attributes[i] > 12) {
+        attributes[i] -= 1;
+        sum -= 1;
+      }
+    }
+
+    let indexToChange = 0;
+    // they are still in random order, so walking through is ok
+    while (sum !== 40) {
+      if (sum > 40 && attributes[indexToChange] > 4) {
+        attributes[indexToChange] -= 1;
+        sum -= 1;
+      } else if (sum < 40 && attributes[indexToChange] < 12) {
+        attributes[indexToChange] += 1;
+        sum += 1;
+      }
+      if (indexToChange === attributes.length - 1) {
+        indexToChange = 0;
+      } else {
+        indexToChange += 1;
+      }
     }
   }
 
@@ -321,6 +355,8 @@ const assignAttributes = (
   dex = 10,
   agi = 10,
   savant = false,
+  minimumTotal = 40,
+  defaultStats = true,
 ) => {
   // initialize with the preference order
   let values = {
@@ -331,7 +367,7 @@ const assignAttributes = (
     agi,
   };
   let attributes = ['str', 'spr', 'vit', 'dex', 'agi'];
-  let attributeValues = createAttributes(savant);
+  let attributeValues = createAttributes(savant, minimumTotal, defaultStats);
 
   // if preference was indicated:
   if (ordered) {
@@ -524,6 +560,8 @@ const createCharacter = (
   vit = 1,
   dex = 1,
   agi = 1,
+  minimumTotal = 40,
+  defaultStats = true,
 ) => {
   let level = chooseLevel(maxLevel);
   let race = chooseRace(originalsOnly);
@@ -541,7 +579,17 @@ const createCharacter = (
   }
   let raceTrait = assignRaceTrait(race[1], savant);
   let qualities = assignQualities(rankQualities, obs, char, wis, savant);
-  let attributes = assignAttributes(rankAttributes, str, spr, vit, dex, agi, savant);
+  let attributes = assignAttributes(
+    rankAttributes,
+    str,
+    spr,
+    vit,
+    dex,
+    agi,
+    savant,
+    minimumTotal,
+    defaultStats,
+  );
   let skills = chooseSkills(level);
   let professions = assignProfession(race[1] === 'Valkyr Aspect');
   let character = {
@@ -562,4 +610,3 @@ module.exports = {
   createCharacter,
   logToConsole,
 };
-
