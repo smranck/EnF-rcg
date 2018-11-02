@@ -469,14 +469,42 @@ const assignRaceTrait = (race, savant = false) => {
   return [specialTraits[race], raceTraits[race][random]];
 };
 
-// Function to assign a profession. Returns an array
+// Function to assign a profession. Returns an array.
 const assignProfession = (valkyr = false, likelihood = 50) => {
-  /*
-  will assign a profession.
-  If valkyr and cleric chosen, overwrite.
-  Otherwise, add in addition
-  Likelihood will be chance out of 100 of being assigned a trait.
-  */
+  const allProfessions = {
+    1: 'Apothecary',
+    2: 'Blacksmith',
+    3: 'Chef',
+    4: 'Cleric',
+    5: 'Engineer',
+    6: 'Medic',
+    7: 'Merchant',
+    8: 'Professor',
+    9: 'Soldier',
+    10: 'Tailor',
+    11: 'Witch / Wizard',
+  };
+  let totalPossible = 11;
+  if (likelihood === 0) {
+    totalPossible = 0;
+  } else if (likelihood < 100) {
+    totalPossible = 11 * Math.floor(100 / likelihood);
+  }
+
+  let random = Math.ceil(Math.random() * totalPossible);
+  let professionsAssigned = [];
+  if (valkyr && random === 4) {
+    professionsAssigned = ['None', 'Special Cleric'];
+  } else if (random < 12) {
+    professionsAssigned.push(allProfessions[random]);
+    if (valkyr) {
+      professionsAssigned.push('Special Cleric');
+    }
+  } else {
+    professionsAssigned.push('None');
+  }
+
+  return professionsAssigned;
 };
 
 const createCharacter = (
@@ -512,10 +540,12 @@ const createCharacter = (
   let qualities = assignQualities(rankQualities, obs, char, wis, savant);
   let attributes = assignAttributes(rankAttributes, str, spr, vit, dex, agi, savant);
   let skills = chooseSkills(level);
+  let professions = assignProfession(race[1] === 'Valkyr');
   let character = {
     level,
     race: race[1],
     characterClass,
+    professions,
     raceTrait,
     skills,
     traits,
@@ -529,3 +559,5 @@ module.exports = {
   createCharacter,
   logToConsole,
 };
+
+
