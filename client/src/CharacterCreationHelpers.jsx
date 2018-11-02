@@ -134,7 +134,7 @@ const chooseRace = (originalsOnly = false) => {
   if (originalsOnly) {
     num = Math.floor(Math.random() * 6);
   } else {
-    num = Math.floor(Math.random() * 13);
+    num = Math.floor(Math.random() * 14);
   }
 
   return [num, races[num]];
@@ -496,14 +496,15 @@ const assignProfession = (valkyr = false, likelihood = 50) => {
   let random = Math.ceil(Math.random() * totalPossible);
   let professionsAssigned = [];
   if (valkyr && random === 4) {
-    professionsAssigned = ['None', 'Special Cleric'];
+    professionsAssigned = ['None'];
   } else if (random < 12) {
     professionsAssigned.push(allProfessions[random]);
-    if (valkyr) {
-      professionsAssigned.push('Special Cleric');
-    }
   } else {
     professionsAssigned.push('None');
+  }
+
+  if (valkyr) {
+    professionsAssigned.push('Special Cleric');
   }
 
   return professionsAssigned;
@@ -542,7 +543,7 @@ const createCharacter = (
   let qualities = assignQualities(rankQualities, obs, char, wis, savant);
   let attributes = assignAttributes(rankAttributes, str, spr, vit, dex, agi, savant);
   let skills = chooseSkills(level);
-  let professions = assignProfession(race[1] === 'Valkyr');
+  let professions = assignProfession(race[1] === 'Valkyr Aspect');
   let character = {
     level,
     race: race[1],
@@ -561,3 +562,4 @@ module.exports = {
   createCharacter,
   logToConsole,
 };
+
