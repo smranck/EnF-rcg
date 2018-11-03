@@ -1,5 +1,6 @@
 import React from 'react';
 import Helpers from '../CharacterCreationHelpers';
+import Character from './Character';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,48 +29,89 @@ export default class App extends React.Component {
       traits: '',
       qualities: {},
       attributes: {},
+      nativeClassBonus: '',
       characterGenerated: false,
+      totalCharacters: 0,
     };
   }
 
   generateCharacter() {
     let character = Helpers.createCharacter();
     const {
-      level, race, characterClass, raceTrait, traits, qualities, attributes,
+      level,
+      race,
+      characterClass,
+      nativeClassBonus,
+      professions,
+      raceTrait,
+      traits,
+      qualities,
+      attributes,
     } = character;
     console.log(character);
     let characterGenerated = true;
+    let { totalCharacters } = this.state;
+    totalCharacters += 1;
     this.setState({
       level,
       race,
       characterClass,
+      nativeClassBonus,
+      professions,
       raceTrait,
       traits,
       qualities,
       attributes,
       characterGenerated,
+      totalCharacters,
     });
   }
 
   render() {
-    const { characterGenerated } = this.state;
+    const {
+      level,
+      race,
+      characterClass,
+      nativeClassBonus,
+      professions,
+      raceTrait,
+      traits,
+      qualities,
+      attributes,
+      characterGenerated,
+      totalCharacters,
+    } = this.state;
+
     return (
       <div>
-        <div>Lorum Ipsum</div>
         <div>
           This will be a random character Generator for the game found at
           https://sinowl.net/ebbandflow/
         </div>
-        {characterGenerated ? (
-          <div>Check the console for your new character</div>
-        ) : (
-          <div>This is where your character would render!</div>
-        )}
         <button type="submit" onClick={() => this.generateCharacter()}>
           {' '}
           Create a new Character
           {' '}
         </button>
+        {characterGenerated ? (
+          <div>
+            <Character
+              key={totalCharacters}
+              level={level}
+              race={race}
+              characterClass={characterClass}
+              nativeClassBonus={nativeClassBonus}
+              professions={professions}
+              raceTrait={raceTrait}
+              traits={traits}
+              attributes={attributes}
+              qualities={qualities}
+              totalCharacters={totalCharacters}
+            />
+          </div>
+        ) : (
+          <div>Click the Button to generate a random character!</div>
+        )}
       </div>
     );
   }
