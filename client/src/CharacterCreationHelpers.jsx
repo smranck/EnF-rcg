@@ -646,6 +646,7 @@ const createCharacter = (
     level,
     race: race[1],
     characterClass,
+    nativeClassBonus,
     professions,
     raceTrait,
     skills,
@@ -660,3 +661,4 @@ module.exports = {
   createCharacter,
   logToConsole,
 };
+
