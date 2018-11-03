@@ -200,7 +200,7 @@ const createAttributes = (savant = false, minimumTotal = 40, defaultStats = true
 
 // returns an array of quality values in a random order
 // minimumTotal is like a mercy rule of sorts
-const createQualities = (savant = false, minimumTotal = 12) => {
+const createQualities = (savant = false, minimumTotal = 12, defaultStats = true) => {
   let qualities = [];
   let sum = 0;
 
@@ -215,6 +215,39 @@ const createQualities = (savant = false, minimumTotal = 12) => {
       }
       qualities.push(roll);
       sum += roll;
+    }
+  }
+
+  // default stats are minimum 4, maximum 12, total of 24
+  if (defaultStats) {
+    // first, set all qualities such that 4 <= attribute <= 12
+    for (let i = 0; i < qualities.length; i += 1) {
+      while (qualities[i] < 4) {
+        qualities[i] += 1;
+        sum += 1;
+      }
+      // this should be impossible, here for completeness
+      while (qualities[i] > 12) {
+        qualities[i] -= 1;
+        sum -= 1;
+      }
+    }
+
+    let indexToChange = 0;
+    // they are still in random order, so walking through is ok
+    while (sum !== 24) {
+      if (sum > 24 && qualities[indexToChange] > 4) {
+        qualities[indexToChange] -= 1;
+        sum -= 1;
+      } else if (sum < 24 && qualities[indexToChange] < 12) {
+        qualities[indexToChange] += 1;
+        sum += 1;
+      }
+      if (indexToChange === qualities.length - 1) {
+        indexToChange = 0;
+      } else {
+        indexToChange += 1;
+      }
     }
   }
 
@@ -388,10 +421,18 @@ const assignAttributes = (
 };
 
 // function to assign the randomly values to qualities. Returns an Object
-const assignQualities = (ordered, obs = 10, char = 10, wis = 10, savant = false) => {
+const assignQualities = (
+  ordered,
+  obs = 10,
+  char = 10,
+  wis = 10,
+  savant = false,
+  minimumTotal = 12,
+  defaultStats = true,
+) => {
   let values = { obs, char, wis };
   let qualities = ['obs', 'char', 'wis'];
-  let qualityValues = createQualities(savant);
+  let qualityValues = createQualities(savant, minimumTotal, defaultStats);
 
   // if preference was indicated, the arrays must be sorted
   if (ordered) {
@@ -560,7 +601,8 @@ const createCharacter = (
   vit = 1,
   dex = 1,
   agi = 1,
-  minimumTotal = 40,
+  minimumTotalAttributes = 40,
+  minimumTotalQualities = 24,
   defaultStats = true,
 ) => {
   let level = chooseLevel(maxLevel);
@@ -578,7 +620,15 @@ const createCharacter = (
     nativeClassBonus = false;
   }
   let raceTrait = assignRaceTrait(race[1], savant);
-  let qualities = assignQualities(rankQualities, obs, char, wis, savant);
+  let qualities = assignQualities(
+    rankQualities,
+    obs,
+    char,
+    wis,
+    savant,
+    minimumTotalQualities,
+    defaultStats,
+  );
   let attributes = assignAttributes(
     rankAttributes,
     str,
@@ -587,7 +637,7 @@ const createCharacter = (
     dex,
     agi,
     savant,
-    minimumTotal,
+    minimumTotalAttributes,
     defaultStats,
   );
   let skills = chooseSkills(level);
