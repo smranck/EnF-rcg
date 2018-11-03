@@ -97,10 +97,6 @@ const traitList = [
   'The Will to Live',
 ];
 
-const logToConsole = () => {
-  console.log('Welcome to slack-casa!');
-};
-
 // returns an array of individual rolls, sorted low to high
 const rollDice = (numberOfDice, sides) => {
   let rolls = [];
@@ -659,6 +655,4 @@ const createCharacter = (
 
 module.exports = {
   createCharacter,
-  logToConsole,
 };
-
