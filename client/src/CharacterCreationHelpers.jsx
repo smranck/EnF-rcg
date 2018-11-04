@@ -173,20 +173,15 @@ const createAttributes = (savant = false, minimumTotal = 40, defaultStats = true
       }
     }
 
-    let indexToChange = 0;
-    // they are still in random order, so walking through is ok
+    // Adjust randomly chosen values until total is 40
     while (sum !== 40) {
+      let indexToChange = Math.floor(Math.random() * attributes.length);
       if (sum > 40 && attributes[indexToChange] > 4) {
         attributes[indexToChange] -= 1;
         sum -= 1;
       } else if (sum < 40 && attributes[indexToChange] < 12) {
         attributes[indexToChange] += 1;
         sum += 1;
-      }
-      if (indexToChange === attributes.length - 1) {
-        indexToChange = 0;
-      } else {
-        indexToChange += 1;
       }
     }
   }
