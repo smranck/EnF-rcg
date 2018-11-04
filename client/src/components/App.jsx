@@ -83,10 +83,13 @@ export default class App extends React.Component {
     } = this.state;
 
     return (
-      <div>
+      <div className="container">
         <div>
-          This will be a random character Generator for the game found at
-          https://sinowl.net/ebbandflow/
+          Random Character Generator for
+          {' '}
+          <a href="https://sinowl.net/ebbandflow/" rel="noopener noreferrer" target="_blank">
+            the Game of Ebb and Flow
+          </a>
         </div>
         <button type="submit" onClick={() => this.generateCharacter()}>
           {' '}
