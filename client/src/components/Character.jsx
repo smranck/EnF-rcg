@@ -22,7 +22,7 @@ export default class Character extends React.Component {
     const { obs, char, wis } = qualities;
 
     return (
-      <div className="character">
+      <div className="character-container">
         <table className="character-display">
           <thead>
             <tr>
