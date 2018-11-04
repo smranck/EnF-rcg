@@ -1,34 +1,46 @@
+body {
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  background: #e7d5e2;
+}
+
 .container {
-  background-color: white;
   border-radius: 4px;
   text-align: center;
   margin-bottom: 40px;
 }
+
 .character-display {
+  background-color: white;
+  overflow: hidden;
   width: 50%;
   margin: 1% 25%;
   color: black;
   text-align: left;
   border: 1px solid black;
-  border-radius: 4px;
+  border-radius: 10px;
   padding: 1%;
+  /* padding: 0.1%; */
 }
 
 table {
-  border-collapse: collapse;
-  border-radius: 10px;
+  /* border-collapse: collapse; */
+  border-spacing: 0;
 }
 
-/* tr {
-  border: 1px solid rgb(113, 101, 101);
-  border: 1px solid rgba(0, 0, 0, 1);
-  -webkit-background-clip: padding-box; /*_ for Safari _*/
-/*background-clip: padding-box; /*_ for IE9+, Firefox 4+, Opera, Chrome _*/
-/*} */
+td {
+  padding: 3px;
+}
 
 tr:nth-child(even) {
   background: rgb(234, 234, 234);
+  /* background: rgb(231, 213, 226);
+  background: rgb(255, 255, 255); */
 }
+
 tr:nth-child(odd) {
-  background: #fff;
+  background: rgb(255, 255, 255);
+  /* background: rgb(231, 213, 226);
+  background: rgb(234, 234, 234); */
 }
