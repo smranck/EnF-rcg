@@ -1,0 +1,46 @@
+body {
+  font-family: proxima-nova, sans-serif;
+  font-style: normal;
+  font-weight: 100;
+  background: #e7d5e2;
+}
+
+.container {
+  border-radius: 4px;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.character-display {
+  background-color: white;
+  overflow: hidden;
+  width: 50%;
+  margin: 1% 25%;
+  color: black;
+  text-align: left;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1%;
+  /* padding: 0.1%; */
+}
+
+table {
+  /* border-collapse: collapse; */
+  border-spacing: 0;
+}
+
+td {
+  padding: 3px;
+}
+
+tr:nth-child(even) {
+  background: rgb(234, 234, 234);
+  /* background: rgb(231, 213, 226);
+  background: rgb(255, 255, 255); */
+}
+
+tr:nth-child(odd) {
+  background: rgb(255, 255, 255);
+  /* background: rgb(231, 213, 226);
+  background: rgb(234, 234, 234); */
+}
