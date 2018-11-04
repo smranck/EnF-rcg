@@ -224,20 +224,15 @@ const createQualities = (savant = false, minimumTotal = 12, defaultStats = true)
       }
     }
 
-    let indexToChange = 0;
-    // they are still in random order, so walking through is ok
+    // Adjust randomly chosen values until total is 24
     while (sum !== 24) {
+      let indexToChange = Math.floor(Math.random() * qualities.length);
       if (sum > 24 && qualities[indexToChange] > 4) {
         qualities[indexToChange] -= 1;
         sum -= 1;
       } else if (sum < 24 && qualities[indexToChange] < 12) {
         qualities[indexToChange] += 1;
         sum += 1;
-      }
-      if (indexToChange === qualities.length - 1) {
-        indexToChange = 0;
-      } else {
-        indexToChange += 1;
       }
     }
   }
