@@ -91,7 +91,11 @@ export default class App extends React.Component {
             the Game of Ebb and Flow
           </a>
         </div>
-        <button type="submit" onClick={() => this.generateCharacter()}>
+        <button
+          type="submit"
+          className="generate-character-button"
+          onClick={() => this.generateCharacter()}
+        >
           {' '}
           Create a new Character
           {' '}
