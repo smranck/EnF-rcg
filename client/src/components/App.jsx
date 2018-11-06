@@ -84,13 +84,6 @@ export default class App extends React.Component {
 
     return (
       <div className="container">
-        <div>
-          Random Character Generator for
-          {' '}
-          <a href="https://sinowl.net/ebbandflow/" rel="noopener noreferrer" target="_blank">
-            the Game of Ebb and Flow
-          </a>
-        </div>
         <button
           type="submit"
           className="generate-character-button"
@@ -119,6 +112,15 @@ export default class App extends React.Component {
         ) : (
           <div>Click the Button to generate a random character!</div>
         )}
+        <div className="footer">
+          <div>
+            Random Character Generator for
+            {' '}
+            <a href="https://sinowl.net/ebbandflow/" rel="noopener noreferrer" target="_blank">
+              the Game of Ebb and Flow
+            </a>
+          </div>
+        </div>
       </div>
     );
   }
