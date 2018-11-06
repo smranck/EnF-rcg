@@ -553,7 +553,7 @@ const assignProfession = (valkyr = false, likelihood = 50) => {
   if (likelihood === 0) {
     totalPossible = 0;
   } else if (likelihood < 100) {
-    totalPossible = 11 * Math.floor(100 / likelihood);
+    totalPossible = Math.floor((100 / likelihood) * totalPossible);
   }
 
   let random = Math.ceil(Math.random() * totalPossible);
@@ -573,9 +573,40 @@ const assignProfession = (valkyr = false, likelihood = 50) => {
   return professionsAssigned;
 };
 
-const choosePath = (characterClass) => {
-  return Math.ceil(Math.random() * 3);
-}
+const chooseClassPath = (characterClass, likelihood = 100) => {
+  const characterPaths = {
+    'Artillery Jockey': ['Jockey', 'Demolitionist', 'Arsenal'],
+    'Crush Avatar': ['Avatar', 'Brawler', 'Monk'],
+    'Doom Harbinger': ['Harbinger', 'Terror', 'Unrelenting'],
+    'Infernal Reaper': ['Reaper', 'Death', 'Souls'],
+    'Arcane Ranger': ['Ranger', 'Sniper', 'Scout'],
+    'Blood Letterer': ['Letterer', 'Decay', 'Suffering'],
+    'Cross Assailant': ['Assailant', 'Deceit', 'Execution'],
+    'Essence Abolisher': ['Abolisher', 'Seizure', 'Debilitation'],
+    'Divine Sentinel': ['Sentinel', 'Sanctity', 'Judgment'],
+    'Flow Assimilator': ['Assimilator', 'Amplification', 'Ringleader'],
+    'Flow Rupturer': ['Rupturer', 'Control', 'Destruction'],
+    'Soul Morpher': ['Morpher', 'Beastmaster', 'Kelpa'],
+    'Crusade Maestro': ['Maestro', 'Inspiration', 'Deterrence'],
+    'Empyreal Ronin': ['Ronin', 'Bushi', 'Vagabond'],
+    'Noble Gallant': ['Gallant', 'Grappler', 'Mountain'],
+    'Runic Chevalier': ['Chevalier', 'Elementalist', 'Fencer'],
+    'Mystic Gunslinger': ['Gunslinger', 'Sharpshooter', 'Munitions'],
+    'Resolute Champion': ['Champion', 'Gladiator', 'Defender'],
+    'Glorious Hunter': ['Hunter', 'Glory', 'Predator'],
+    'Twilight Sentry': ['Sentry', 'Might', 'Sorcery'],
+  };
+  let totalPossible = 3;
+  if (likelihood === 0) {
+    return 'None';
+  }
+  if (likelihood < 100) {
+    totalPossible = Math.floor((100 / likelihood) * totalPossible);
+  }
+  let random = Math.floor(Math.random() * totalPossible);
+
+  return characterPaths[characterClass][random] || 'None';
+};
 
 const createCharacter = (
   maxLevel = 20,
@@ -632,11 +663,13 @@ const createCharacter = (
   );
   let skills = chooseSkills(level);
   let professions = assignProfession(race[1] === 'Valkyr Aspect');
+  let classPath = chooseClassPath(characterClass)
   let character = {
     level,
     race: race[1],
     characterClass,
     nativeClassBonus,
+    classPath,
     professions,
     raceTrait,
     skills,
