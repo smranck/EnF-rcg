@@ -573,6 +573,10 @@ const assignProfession = (valkyr = false, likelihood = 50) => {
   return professionsAssigned;
 };
 
+const choosePath = (characterClass) => {
+  return Math.ceil(Math.random() * 3);
+}
+
 const createCharacter = (
   maxLevel = 20,
   originalsOnly = false,
