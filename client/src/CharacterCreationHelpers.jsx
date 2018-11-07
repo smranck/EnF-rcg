@@ -608,6 +608,86 @@ const chooseClassPath = (characterClass, likelihood = 100) => {
   return characterPaths[characterClass][random] || 'None';
 };
 
+// function to assign a personality. Returns an object.
+const assignPersonality = () => {
+  const personalities = {
+    1: {
+      personality: 'Caregiver',
+      firstForte: 'Compassionate',
+      secondForte: 'Generous',
+      flaw: 'Self-Sacrificial',
+    },
+    2: {
+      personality: 'Creator',
+      firstForte: 'Creative',
+      secondForte: 'Perservenent',
+      flaw: 'Perfectionist',
+    },
+    3: {
+      personality: 'Dreamer',
+      firstForte: 'Hopeful',
+      secondForte: 'Cheerful',
+      flaw: 'Naive',
+    },
+    4: {
+      personality: 'Everyman',
+      firstForte: 'Adaptive',
+      secondForte: 'Empathetic',
+      flaw: 'Submissive',
+    },
+    5: {
+      personality: 'Hero',
+      firstForte: 'Courageous',
+      secondForte: 'Vigilant',
+      flaw: 'Arrogant',
+    },
+    6: {
+      personality: 'Individualist',
+      firstForte: 'Incorruptible',
+      secondForte: 'Adventurous',
+      flaw: 'Stubborn',
+    },
+    7: {
+      personality: 'Jester',
+      firstForte: 'Joyous',
+      secondForte: 'Funny',
+      flaw: 'Frivolous',
+    },
+    8: {
+      personality: 'Leader',
+      firstForte: 'Responsible',
+      secondForte: 'Confident',
+      flaw: 'Authoritative',
+    },
+    9: {
+      personality: 'Partner',
+      firstForte: 'Passionate',
+      secondForte: 'Committed',
+      flaw: 'Anxious',
+    },
+    10: {
+      personality: 'Rebel',
+      firstForte: 'Unpredictable',
+      secondForte: 'Resourceful',
+      flaw: 'Short-Tempered',
+    },
+    11: {
+      personality: 'Thinker',
+      firstForte: 'Logical',
+      secondForte: 'Realistic',
+      flaw: 'Overcautious',
+    },
+    12: {
+      personality: 'Visionary',
+      firstForte: 'Ambitious',
+      secondForte: 'Brilliant',
+      flaw: 'Manipulative',
+    },
+  };
+
+  return personalities[Math.ceil(Math.random() * 12)];
+};
+
 const createCharacter = (
   maxLevel = 20,
   originalsOnly = false,
@@ -663,13 +743,15 @@ const createCharacter = (
   );
   let skills = chooseSkills(level);
   let professions = assignProfession(race[1] === 'Valkyr Aspect');
-  let classPath = chooseClassPath(characterClass)
+  let classPath = chooseClassPath(characterClass);
+  let personality = assignPersonality();
   let character = {
     level,
     race: race[1],
     characterClass,
     nativeClassBonus,
     classPath,
+    personality,
     professions,
     raceTrait,
     skills,
