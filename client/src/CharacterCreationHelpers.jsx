@@ -271,6 +271,17 @@ const chooseTraits = (level = 1, hardworking = false, nativeClassBonus = false) 
       traits = ['Savant of All Trades'];
     }
   }
+  if (hardworking && nativeClassBonus) {
+    traits[2] = 'Hardworking - '.concat(traits[2]);
+    traits[3] = 'Hardworking - '.concat(traits[3]);
+    traits[4] = nativeClassBonus.concat(` - ${traits[4]}`);
+  } else if (hardworking) {
+    traits[2] = 'Hardworking - '.concat(traits[2]);
+    traits[3] = 'Hardworking - '.concat(traits[3]);
+  } else if (nativeClassBonus) {
+    traits[2] = nativeClassBonus.concat(` - ${traits[2]}`);
+  }
+
   return traits;
 };
 
@@ -714,7 +725,9 @@ const createCharacter = (
   let traits = chooseTraits(
     level,
     race[1] === 'Human',
-    nativeClassBonus === 'Ancestral Pride' || nativeClassBonus === 'Adaptation',
+    nativeClassBonus === 'Ancestral Pride' || nativeClassBonus === 'Adaptation'
+      ? nativeClassBonus
+      : false,
   );
   let savant = traits.length === 1;
   if (savant) {
