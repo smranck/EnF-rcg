@@ -7,7 +7,9 @@ export default class Character extends React.Component {
       level,
       race,
       characterClass,
+      classPath,
       nativeClassBonus,
+      personality,
       professions,
       raceTrait,
       traits,
@@ -20,6 +22,9 @@ export default class Character extends React.Component {
       str, spr, vit, dex, agi,
     } = attributes;
     const { obs, char, wis } = qualities;
+    const {
+      personalityTrait, firstForte, secondForte, flaw,
+    } = personality;
 
     return (
       <div className="character-container">
@@ -50,6 +55,14 @@ export default class Character extends React.Component {
             <tr>
               <td>Class</td>
               <td>{characterClass}</td>
+            </tr>
+            <tr>
+              <td>Class Path</td>
+              <td>{classPath}</td>
+            </tr>
+            <tr>
+              <td>Class Path Stage</td>
+              <td>{Math.floor(level / 2)}</td>
             </tr>
             <tr>
               <td>Native Class Bonus</td>
@@ -98,6 +111,22 @@ export default class Character extends React.Component {
             <tr>
               <td>Profession</td>
               <td>{professions[0]}</td>
+            </tr>
+            <tr>
+              <td>Personality Trait</td>
+              <td>{personalityTrait}</td>
+            </tr>
+            <tr>
+              <td>Personality Forte</td>
+              <td>{firstForte}</td>
+            </tr>
+            <tr>
+              <td>Personality Forte</td>
+              <td>{secondForte}</td>
+            </tr>
+            <tr>
+              <td>Personality Flaw</td>
+              <td>{flaw}</td>
             </tr>
             {race === 'Valkyr Aspect' ? (
               <tr>
