@@ -127,6 +127,12 @@ export default class App extends React.Component {
             <a href="https://sinowl.net/ebbandflow/" rel="noopener noreferrer" target="_blank">
               the Game of Ebb and Flow
             </a>
+            {', '}
+            source code available
+            {' '}
+            <a href="https://github.com/smranck/EnF-rcg" rel="noopener noreferrer" target="_blank">
+              here
+            </a>
           </div>
         </div>
       </div>
