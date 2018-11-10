@@ -13,7 +13,6 @@ body {
 .container {
   border-radius: 4px;
   text-align: center;
-  /* margin-bottom: 40px; */
 }
 
 .generate-character-button {
@@ -49,10 +48,20 @@ body {
   opacity: 0.5;
 }
 
-.character-display {
-  background-color: white;
+.character-details {
+  display: inline-block;
+}
+
+.character-stats {
+  display: inline-block;
+}
+
+table {
+  vertical-align: top;
+  border-spacing: 0;
   overflow: hidden;
-  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
   color: black;
   text-align: left;
   border: 1px solid black;
@@ -60,15 +69,26 @@ body {
   padding: 1%;
   margin-left: auto;
   margin-right: auto;
-  /* padding: 0.1%; */
+  background-color: white;
 }
 
-table {
-  /* border-collapse: collapse; */
-  border-spacing: 0;
-  /* margin: 0 auto; */
-  margin-left: auto;
-  margin-right: auto;
+.table-container {
+  display: inline-block;
+  width: 90%;
+}
+
+.container-divider {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+
+.settings {
+  /* display: none; */
+  clear: both;
+  position: none;
+  float: none;
 }
 
 td {
@@ -88,18 +108,23 @@ tr:nth-child(odd) {
   background: rgb(234, 234, 234); */
 }
 
-/* td:nth-child(even) {
+th {
   text-align: center;
-} */
+}
 
 .footer {
+  margin-left: auto;
+  margin-right: auto;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
   padding: 1rem;
-  width: 100%;
+  width: 90%;
   height: 3rem;
   text-align: center;
-  /* background-color: red; */
 }
+
+/* .clearer {
+  clear: both;
+} */
