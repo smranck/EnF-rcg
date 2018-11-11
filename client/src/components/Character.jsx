@@ -17,6 +17,9 @@ export default class Character extends React.Component {
       qualities,
       attributes,
       totalCharacters,
+      defaultStats,
+      nativeRace,
+      handleInputChange,
     } = this.props;
 
     const {
@@ -65,7 +68,11 @@ export default class Character extends React.Component {
               </tbody>
             </table>
             <div className="clearer" />
-            <Settings />
+            <Settings
+              defaultStats={defaultStats}
+              nativeRace={nativeRace}
+              handleInputChange={e => handleInputChange(e)}
+            />
           </span>
           <span className="container-divider">
             <table className="character-details">
