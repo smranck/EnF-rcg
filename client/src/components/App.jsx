@@ -34,6 +34,16 @@ export default class App extends React.Component {
     };
   }
 
+  handleInputChange(event) {
+    const { target } = event;
+    const value = !!target.checked;
+    const { name } = target;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
   generateCharacter() {
     let {
       maxLevel,
@@ -53,6 +63,7 @@ export default class App extends React.Component {
       minimumTotalQualities,
       defaultStats,
     } = this.state;
+
     let character = Helpers.createCharacter(
       maxLevel,
       originalsOnly,
@@ -120,6 +131,8 @@ export default class App extends React.Component {
       attributes,
       characterGenerated,
       totalCharacters,
+      defaultStats,
+      nativeRace,
     } = this.state;
 
     return (
@@ -127,7 +140,7 @@ export default class App extends React.Component {
         <button
           type="submit"
           className="generate-character-button"
-          onClick={() => this.generateCharacter()}
+          onClick={e => this.generateCharacter(e)}
         >
           {' '}
           Create a new Character
@@ -149,6 +162,9 @@ export default class App extends React.Component {
               attributes={attributes}
               qualities={qualities}
               totalCharacters={totalCharacters}
+              defaultStats={defaultStats}
+              nativeRace={nativeRace}
+              handleInputChange={e => this.handleInputChange(e)}
             />
           </div>
         ) : (
