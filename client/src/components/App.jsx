@@ -1,28 +1,28 @@
 import React from 'react';
 import Helpers from '../CharacterCreationHelpers';
 import Character from './Character';
+import Settings from './Settings';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // characterGenerated: false,
-      // nativePreference: false,
-      // originalClasses: false,
-      // maxLevel: 20,
-      // level: 1,
-      // race: ['Race Not Assigned', 'Race Not Assigned'],
-      // raceObject: {}, // this will be gotten eventually, won't need race above
-      // class: '',
-      // skills: {},
-      // skillsModifier: 0,
-      // qualities: [],
-      // attributes: [],
-      // str: 10,
-      // spr: 10,
-      // vit: 10,
-      // dex: 10,
-      // agi: 10,
+      maxLevel: 20,
+      originalsOnly: false,
+      nativeRace: false,
+      rankQualities: false,
+      obs: 1,
+      char: 1,
+      wis: 1,
+      rankAttributes: false,
+      str: 1,
+      spr: 1,
+      vit: 1,
+      dex: 1,
+      agi: 1,
+      minimumTotalAttributes: 40,
+      minimumTotalQualities: 24,
+      defaultStats: true,
       level: 1,
       race: '',
       raceTrait: [],
@@ -35,8 +35,54 @@ export default class App extends React.Component {
     };
   }
 
+  handleInputChange(event) {
+    const { target } = event;
+    const value = !!target.checked;
+    const { name } = target;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
   generateCharacter() {
-    let character = Helpers.createCharacter();
+    let {
+      maxLevel,
+      originalsOnly,
+      nativeRace,
+      rankQualities,
+      obs,
+      char,
+      wis,
+      rankAttributes,
+      str,
+      spr,
+      vit,
+      dex,
+      agi,
+      minimumTotalAttributes,
+      minimumTotalQualities,
+      defaultStats,
+    } = this.state;
+
+    let character = Helpers.createCharacter(
+      maxLevel,
+      originalsOnly,
+      nativeRace,
+      rankQualities,
+      obs,
+      char,
+      wis,
+      rankAttributes,
+      str,
+      spr,
+      vit,
+      dex,
+      agi,
+      minimumTotalAttributes,
+      minimumTotalQualities,
+      defaultStats,
+    );
     const {
       level,
       race,
@@ -86,6 +132,8 @@ export default class App extends React.Component {
       attributes,
       characterGenerated,
       totalCharacters,
+      defaultStats,
+      nativeRace,
     } = this.state;
 
     return (
@@ -93,7 +141,7 @@ export default class App extends React.Component {
         <button
           type="submit"
           className="generate-character-button"
-          onClick={() => this.generateCharacter()}
+          onClick={e => this.generateCharacter(e)}
         >
           {' '}
           Create a new Character
@@ -115,10 +163,15 @@ export default class App extends React.Component {
               attributes={attributes}
               qualities={qualities}
               totalCharacters={totalCharacters}
+              defaultStats={defaultStats}
+              nativeRace={nativeRace}
+              handleInputChange={e => this.handleInputChange(e)}
             />
           </div>
         ) : (
-          <div>Click the Button to generate a random character!</div>
+          <div>
+            <Settings />
+          </div>
         )}
         <div className="footer">
           <div>
@@ -133,6 +186,13 @@ export default class App extends React.Component {
             <a href="https://github.com/smranck/EnF-rcg" rel="noopener noreferrer" target="_blank">
               here
             </a>
+          </div>
+          <div className="smaller">
+            *While Default Stats is selected, Attributes will sum to 40 and Qualities will sum to 24
+          </div>
+          <div className="smaller">
+            **While Native Classes Only is selected, assigned class will always be native to
+            assigned race
           </div>
         </div>
       </div>

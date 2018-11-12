@@ -142,9 +142,9 @@ const chooseLevel = (max = 20) => Math.max(Math.ceil(Math.random() * max), 1);
 const createAttributes = (savant = false, minimumTotal = 40, defaultStats = true) => {
   let attributes = [];
   let sum = 0;
-
+  let min = defaultStats ? minimumTotal : 5;
   // when generating values, make sure they are above a mercy line
-  while (sum < minimumTotal) {
+  while (sum < min) {
     sum = 0;
     attributes = [];
     for (let i = 1; i < 6; i += 1) {
@@ -194,8 +194,9 @@ const createAttributes = (savant = false, minimumTotal = 40, defaultStats = true
 const createQualities = (savant = false, minimumTotal = 12, defaultStats = true) => {
   let qualities = [];
   let sum = 0;
+  let min = defaultStats ? minimumTotal : 3;
 
-  while (sum < minimumTotal) {
+  while (sum < min) {
     sum = 0;
     qualities = [];
     for (let i = 0; i < 3; i += 1) {
@@ -268,10 +269,12 @@ const chooseTraits = (level = 1, hardworking = false, nativeClassBonus = false) 
     } else {
       // savant case
       savant = true;
-      traits = ['Savant of All Trades'];
     }
   }
-  if (hardworking && nativeClassBonus) {
+
+  if (savant) {
+    traits = ['Savant of All Trades'];
+  } else if (hardworking && nativeClassBonus) {
     traits[2] = 'Hardworking - '.concat(traits[2]);
     traits[3] = 'Hardworking - '.concat(traits[3]);
     traits[4] = nativeClassBonus.concat(` - ${traits[4]}`);
@@ -719,7 +722,7 @@ const createCharacter = (
 ) => {
   let level = chooseLevel(maxLevel);
   let race = chooseRace(originalsOnly);
-  let characterClass = chooseClass(nativeRace);
+  let characterClass = chooseClass(nativeRace ? race : false);
   let native = checkForNativeClass(race[1], characterClass);
   let nativeClassBonus = native ? provideNativeClassBonus(characterClass) : false;
   let traits = chooseTraits(
