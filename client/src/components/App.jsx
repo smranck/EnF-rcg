@@ -170,7 +170,11 @@ export default class App extends React.Component {
           </div>
         ) : (
           <div>
-            <Settings />
+            <Settings
+              defaultStats={defaultStats}
+              nativeRace={nativeRace}
+              handleInputChange={e => this.handleInputChange(e)}
+            />
           </div>
         )}
         <div className="footer">
