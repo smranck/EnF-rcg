@@ -7,9 +7,11 @@ export default class Character extends React.Component {
     return (
       <div className="settings">
         <span id="settingsHeader">Settings</span>
+        <br />
         <form>
           <label htmlFor="defaultStatsCheckbox">
             Default Stats?
+            <sup>*</sup>
             <input
               name="defaultStats"
               type="checkbox"
@@ -20,6 +22,7 @@ export default class Character extends React.Component {
           <br />
           <label htmlFor="nativeRaceCheckbox">
             Native Classes Only?
+            <sup>**</sup>
             <input
               name="nativeRace"
               type="checkbox"

@@ -1,6 +1,7 @@
 import React from 'react';
 import Helpers from '../CharacterCreationHelpers';
 import Character from './Character';
+import Settings from './Settings';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -168,7 +169,9 @@ export default class App extends React.Component {
             />
           </div>
         ) : (
-          <div>Click the Button to generate a random character!</div>
+          <div>
+            <Settings />
+          </div>
         )}
         <div className="footer">
           <div>
@@ -183,6 +186,13 @@ export default class App extends React.Component {
             <a href="https://github.com/smranck/EnF-rcg" rel="noopener noreferrer" target="_blank">
               here
             </a>
+          </div>
+          <div className="smaller">
+            *While Default Stats is selected, Attributes will sum to 40 and Qualities will sum to 24
+          </div>
+          <div className="smaller">
+            **While Native Classes Only is selected, assigned class will always be native to
+            assigned race
           </div>
         </div>
       </div>
