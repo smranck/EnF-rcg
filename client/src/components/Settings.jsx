@@ -6,7 +6,7 @@ export default class Character extends React.Component {
     const { defaultStats, nativeRace, handleInputChange } = this.props;
     return (
       <div className="settings">
-        <span>Settings</span>
+        <span id="settingsHeader">Settings</span>
         <form>
           <label htmlFor="defaultStatsCheckbox">
             Default Stats?

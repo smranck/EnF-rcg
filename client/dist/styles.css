@@ -54,6 +54,7 @@ body {
 
 .character-stats {
   display: inline-block;
+  /* margin: auto; */
 }
 
 table {
@@ -67,9 +68,29 @@ table {
   border: 1px solid black;
   border-radius: 10px;
   padding: 1%;
+  background-color: white;
+}
+
+.settings {
+  vertical-align: top;
+  border-spacing: 0;
+  overflow: hidden;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 5%;
+  color: black;
+  text-align: left;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 1%;
   background-color: white;
+  display: inline-block;
+  text-align: center;
+  line-height: 1.15;
+}
+
+#settingsHeader {
+  font-weight: bold;
 }
 
 .table-container {
@@ -82,13 +103,6 @@ table {
   vertical-align: top;
   margin-left: 0.5%;
   margin-right: 0.5%;
-}
-
-.settings {
-  /* display: none; */
-  clear: both;
-  position: none;
-  float: none;
 }
 
 td {
