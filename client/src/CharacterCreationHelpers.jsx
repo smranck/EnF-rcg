@@ -758,8 +758,8 @@ const createCharacter = (
       : false,
   );
   let savant = traits.length === 1;
-  if (savant) {
-    nativeClassBonus = false;
+  if (savant && nativeClassBonus) {
+    [nativeClassBonus] = traits;
   }
   let raceTrait = assignRaceTrait(race[1], savant);
   let qualities = assignQualities(
