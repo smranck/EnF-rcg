@@ -139,7 +139,7 @@ const chooseRace = (originalsOnly = false) => {
 const chooseLevel = (max = 20) => Math.max(Math.ceil(Math.random() * max), 1);
 
 // returns an array of attribute values in a random order
-const createAttributes = (savant = false, defaultStats = true) => {
+const createAttributes = (savant = false, minimumTotal = 20, defaultStats = true) => {
   let attributes = [];
   let sum = 0;
   let firstRoll = rollDice(3, 6);
@@ -206,20 +206,33 @@ const createAttributes = (savant = false, defaultStats = true) => {
 const createQualities = (savant = false, minimumTotal = 12, defaultStats = true) => {
   let qualities = [];
   let sum = 0;
-  let min = defaultStats ? minimumTotal : 3;
 
-  while (sum < min) {
-    sum = 0;
-    qualities = [];
-    for (let i = 0; i < 3; i += 1) {
-      let dice = rollDice(3, 6);
-      let roll = dice[1] + dice[2];
-      if (savant) {
-        roll += 1;
-      }
-      qualities.push(roll);
-      sum += roll;
+  let firstRoll = rollDice(3, 6);
+  firstRoll = firstRoll[1] + firstRoll[2];
+  let secondRoll = rollDice(3, 6);
+  secondRoll = secondRoll[1] + secondRoll[2];
+
+  let lowest = Math.min(firstRoll, secondRoll);
+  let highest = Math.max(firstRoll, secondRoll);
+
+  while (qualities.length < 3) {
+    let dice = rollDice(3, 6);
+    let roll = dice[1] + dice[2];
+    let value = roll;
+    if (savant) {
+      roll += 1;
     }
+    if (roll < lowest) {
+      value = lowest;
+      lowest = roll;
+    }
+    if (roll > highest) {
+      value = highest;
+      highest = roll;
+    }
+
+    qualities.push(value);
+    sum += roll;
   }
 
   // default stats are minimum 4, maximum 12, total of 24
