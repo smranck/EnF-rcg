@@ -22,6 +22,7 @@ export default class Character extends React.Component {
       handleCheckmarkForms,
       professionLikelihood,
       handleSelectorForms,
+      characterGenerated,
     } = this.props;
 
     const {
@@ -39,33 +40,51 @@ export default class Character extends React.Component {
             <table className="character-stats">
               <thead>
                 <tr>
-                  <th colSpan="4"> Character Stats</th>
+                  <th colSpan="2"> Character Stats</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <td>Strength</td>
-                  <td>{str}</td>
-                  <td>Observation</td>
-                  <td>{obs}</td>
+                  <td colSpan="2" className="statHeader">
+                    Attributes
+                  </td>
                 </tr>
                 <tr>
                   <td>Spirit</td>
                   <td>{spr}</td>
-                  <td>Charisma</td>
-                  <td>{char}</td>
                 </tr>
                 <tr>
                   <td>Vitality</td>
                   <td>{vit}</td>
-                  <td>Wisdom</td>
-                  <td>{wis}</td>
                 </tr>
                 <tr>
                   <td>Agility</td>
                   <td>{agi}</td>
+                </tr>
+                <tr>
                   <td>Dexterity</td>
                   <td>{dex}</td>
+                </tr>
+                <tr>
+                  <td>Strength</td>
+                  <td>{str}</td>
+                </tr>
+                <tr>
+                  <td colSpan="2" className="statHeader">
+                    Qualities
+                  </td>
+                </tr>
+                <tr>
+                  <td>Observation</td>
+                  <td>{obs}</td>
+                </tr>
+                <tr>
+                  <td>Charisma</td>
+                  <td>{char}</td>
+                </tr>
+                <tr>
+                  <td>Wisdom</td>
+                  <td>{wis}</td>
                 </tr>
               </tbody>
             </table>
@@ -76,6 +95,7 @@ export default class Character extends React.Component {
               handleCheckmarkForms={e => handleCheckmarkForms(e)}
               professionLikelihood={professionLikelihood}
               handleSelectorForms={e => handleSelectorForms(e)}
+              characterGenerated={characterGenerated}
             />
           </span>
           <span className="container-divider">

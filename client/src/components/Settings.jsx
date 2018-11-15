@@ -9,10 +9,11 @@ export default class Character extends React.Component {
       handleCheckmarkForms,
       professionLikelihood,
       handleSelectorForms,
+      characterGenerated,
     } = this.props;
 
     return (
-      <div className="settings">
+      <div className={`settings${characterGenerated ? '' : ' pregenerated'}`}>
         <span id="settingsHeader">Settings</span>
         <br />
         <form>
@@ -28,7 +29,7 @@ export default class Character extends React.Component {
           </label>
           <br />
           <label htmlFor="nativeRaceCheckbox">
-            Native Classes Only?
+            Native Class?
             <sup>**</sup>
             <input
               name="nativeRace"

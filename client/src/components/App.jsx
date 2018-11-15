@@ -181,6 +181,7 @@ export default class App extends React.Component {
               handleCheckmarkForms={e => this.handleCheckmarkForms(e)}
               professionLikelihood={professionLikelihood}
               handleSelectorForms={e => this.handleSelectorForms(e)}
+              characterGenerated={characterGenerated}
             />
           </div>
         ) : (
@@ -191,6 +192,7 @@ export default class App extends React.Component {
               handleCheckmarkForms={e => this.handleCheckmarkForms(e)}
               professionLikelihood={professionLikelihood}
               handleSelectorForms={e => this.handleSelectorForms(e)}
+              characterGenerated={characterGenerated}
             />
           </div>
         )}
