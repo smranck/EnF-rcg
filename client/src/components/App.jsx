@@ -45,6 +45,15 @@ export default class App extends React.Component {
     });
   }
 
+  handleSelectorForms(event) {
+    const { target } = event;
+    const { name, value } = target;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
   generateCharacter() {
     let {
       maxLevel,
