@@ -32,6 +32,7 @@ export default class App extends React.Component {
       nativeClassBonus: '',
       characterGenerated: false,
       totalCharacters: 0,
+      professionLikelihood: 'maybe',
     };
   }
 
@@ -72,6 +73,7 @@ export default class App extends React.Component {
       minimumTotalAttributes,
       minimumTotalQualities,
       defaultStats,
+      professionLikelihood,
     } = this.state;
 
     let character = Helpers.createCharacter(
@@ -91,6 +93,7 @@ export default class App extends React.Component {
       minimumTotalAttributes,
       minimumTotalQualities,
       defaultStats,
+      professionLikelihood,
     );
     const {
       level,
@@ -143,6 +146,7 @@ export default class App extends React.Component {
       totalCharacters,
       defaultStats,
       nativeRace,
+      professionLikelihood,
     } = this.state;
 
     return (
@@ -175,6 +179,8 @@ export default class App extends React.Component {
               defaultStats={defaultStats}
               nativeRace={nativeRace}
               handleCheckmarkForms={e => this.handleCheckmarkForms(e)}
+              professionLikelihood={professionLikelihood}
+              handleSelectorForms={e => this.handleSelectorForms(e)}
             />
           </div>
         ) : (
@@ -183,6 +189,8 @@ export default class App extends React.Component {
               defaultStats={defaultStats}
               nativeRace={nativeRace}
               handleCheckmarkForms={e => this.handleCheckmarkForms(e)}
+              professionLikelihood={professionLikelihood}
+              handleSelectorForms={e => this.handleSelectorForms(e)}
             />
           </div>
         )}

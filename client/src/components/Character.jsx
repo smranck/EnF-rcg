@@ -20,6 +20,8 @@ export default class Character extends React.Component {
       defaultStats,
       nativeRace,
       handleCheckmarkForms,
+      professionLikelihood,
+      handleSelectorForms,
     } = this.props;
 
     const {
@@ -72,6 +74,8 @@ export default class Character extends React.Component {
               defaultStats={defaultStats}
               nativeRace={nativeRace}
               handleCheckmarkForms={e => handleCheckmarkForms(e)}
+              professionLikelihood={professionLikelihood}
+              handleSelectorForms={e => handleSelectorForms(e)}
             />
           </span>
           <span className="container-divider">

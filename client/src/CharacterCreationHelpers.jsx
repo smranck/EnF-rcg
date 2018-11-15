@@ -574,7 +574,7 @@ const assignRaceTrait = (race, savant = false) => {
 };
 
 // Function to assign a profession. Returns an array.
-const assignProfession = (valkyr = false, likelihood = 50) => {
+const assignProfession = (valkyr = false, likelihood = 'maybe') => {
   const allProfessions = {
     1: 'Apothecary',
     2: 'Blacksmith',
@@ -588,11 +588,12 @@ const assignProfession = (valkyr = false, likelihood = 50) => {
     10: 'Tailor',
     11: 'Witch / Wizard',
   };
+
   let totalPossible = 11;
-  if (likelihood === 0) {
-    totalPossible = 0;
-  } else if (likelihood < 100) {
-    totalPossible = Math.floor((100 / likelihood) * totalPossible);
+  if (likelihood === 'no') {
+    return ['None'];
+  } else if (likelihood === 'maybe') {
+    totalPossible *= 2;
   }
 
   let random = Math.ceil(Math.random() * totalPossible);
@@ -744,6 +745,7 @@ const createCharacter = (
   minimumTotalAttributes = 40,
   minimumTotalQualities = 24,
   defaultStats = true,
+  professionLikelihood = 'maybe',
 ) => {
   let level = chooseLevel(maxLevel);
   let race = chooseRace(originalsOnly);
@@ -783,7 +785,7 @@ const createCharacter = (
     defaultStats,
   );
   let skills = chooseSkills(level);
-  let professions = assignProfession(race[1] === 'Valkyr Aspect');
+  let professions = assignProfession(race[1] === 'Valkyr Aspect', professionLikelihood);
   let classPath = chooseClassPath(characterClass);
   let personality = assignPersonality();
   let character = {
