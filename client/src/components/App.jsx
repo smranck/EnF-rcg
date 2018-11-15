@@ -35,7 +35,7 @@ export default class App extends React.Component {
     };
   }
 
-  handleInputChange(event) {
+  handleCheckmarkForms(event) {
     const { target } = event;
     const value = !!target.checked;
     const { name } = target;
@@ -165,7 +165,7 @@ export default class App extends React.Component {
               totalCharacters={totalCharacters}
               defaultStats={defaultStats}
               nativeRace={nativeRace}
-              handleInputChange={e => this.handleInputChange(e)}
+              handleCheckmarkForms={e => this.handleCheckmarkForms(e)}
             />
           </div>
         ) : (
@@ -173,7 +173,7 @@ export default class App extends React.Component {
             <Settings
               defaultStats={defaultStats}
               nativeRace={nativeRace}
-              handleInputChange={e => this.handleInputChange(e)}
+              handleCheckmarkForms={e => this.handleCheckmarkForms(e)}
             />
           </div>
         )}

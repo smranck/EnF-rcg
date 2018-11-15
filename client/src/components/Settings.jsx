@@ -3,7 +3,7 @@ import React from 'react';
 // eslint-disable-next-line react/prefer-stateless-function
 export default class Character extends React.Component {
   render() {
-    const { defaultStats, nativeRace, handleInputChange } = this.props;
+    const { defaultStats, nativeRace, handleCheckmarkForms } = this.props;
     return (
       <div className="settings">
         <span id="settingsHeader">Settings</span>
@@ -16,7 +16,7 @@ export default class Character extends React.Component {
               name="defaultStats"
               type="checkbox"
               checked={defaultStats}
-              onChange={e => handleInputChange(e)}
+              onChange={e => handleCheckmarkForms(e)}
             />
           </label>
           <br />
@@ -27,7 +27,7 @@ export default class Character extends React.Component {
               name="nativeRace"
               type="checkbox"
               checked={nativeRace}
-              onChange={e => handleInputChange(e)}
+              onChange={e => handleCheckmarkForms(e)}
             />
           </label>
         </form>

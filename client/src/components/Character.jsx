@@ -19,7 +19,7 @@ export default class Character extends React.Component {
       totalCharacters,
       defaultStats,
       nativeRace,
-      handleInputChange,
+      handleCheckmarkForms,
     } = this.props;
 
     const {
@@ -71,7 +71,7 @@ export default class Character extends React.Component {
             <Settings
               defaultStats={defaultStats}
               nativeRace={nativeRace}
-              handleInputChange={e => handleInputChange(e)}
+              handleCheckmarkForms={e => handleCheckmarkForms(e)}
             />
           </span>
           <span className="container-divider">
