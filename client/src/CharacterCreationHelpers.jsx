@@ -167,7 +167,7 @@ const createAttributes = (savant = false, minimumTotal = 20, defaultStats = true
     }
 
     attributes.push(value);
-    sum += roll;
+    sum += value;
   }
 
   // default stats are minimum 4, maximum 12, total of 40
@@ -232,7 +232,7 @@ const createQualities = (savant = false, minimumTotal = 12, defaultStats = true)
     }
 
     qualities.push(value);
-    sum += roll;
+    sum += value;
   }
 
   // default stats are minimum 4, maximum 12, total of 24
@@ -592,7 +592,9 @@ const assignProfession = (valkyr = false, likelihood = 'maybe') => {
   let totalPossible = 11;
   if (likelihood === 'no') {
     return ['None'];
-  } else if (likelihood === 'maybe') {
+  }
+
+  if (likelihood === 'maybe') {
     totalPossible *= 2;
   }
 
