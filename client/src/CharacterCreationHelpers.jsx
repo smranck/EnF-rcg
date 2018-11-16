@@ -575,6 +575,14 @@ const assignRaceTrait = (race, savant = false) => {
 
 // Function to assign a profession. Returns an array.
 const assignProfession = (valkyr = false, likelihood = 'maybe') => {
+  // If no profession is desired, assign it only to valkyrs
+  if (likelihood === 'no') {
+    if (valkyr) {
+      return ['Special Cleric'];
+    }
+    return ['None'];
+  }
+
   const allProfessions = {
     1: 'Apothecary',
     2: 'Blacksmith',
@@ -589,27 +597,25 @@ const assignProfession = (valkyr = false, likelihood = 'maybe') => {
     11: 'Witch / Wizard',
   };
 
+  // there are 11 possible by default.
   let totalPossible = 11;
-  if (likelihood === 'no') {
-    return ['None'];
-  }
-
+  // if they aren't sure, multiply denominator by 2
   if (likelihood === 'maybe') {
     totalPossible *= 2;
   }
 
   let random = Math.ceil(Math.random() * totalPossible);
   let professionsAssigned = [];
-  if (valkyr && random === 4) {
+  if (valkyr && random === 4) { // valkyrs are automatically clerics, special only
     professionsAssigned = ['Special Cleric'];
-  } else if (random < 12) {
+  } else if (random < 12) { // assign a trait
     professionsAssigned.push(allProfessions[random]);
-    if (valkyr) {
+    if (valkyr) { // valkyrs are automatically clerics in addition to other professions
       professionsAssigned.push('Special Cleric');
     }
-  } else if (valkyr) {
+  } else if (valkyr) { // valkyrs are automatically clerics
     professionsAssigned.push('Special Cleric');
-  } else {
+  } else { // if selected number outside range, there is no profession
     professionsAssigned.push('None');
   }
 
