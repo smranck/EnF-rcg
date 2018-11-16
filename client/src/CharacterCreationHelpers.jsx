@@ -601,15 +601,16 @@ const assignProfession = (valkyr = false, likelihood = 'maybe') => {
   let random = Math.ceil(Math.random() * totalPossible);
   let professionsAssigned = [];
   if (valkyr && random === 4) {
-    professionsAssigned = ['None'];
+    professionsAssigned = ['Special Cleric'];
   } else if (random < 12) {
     professionsAssigned.push(allProfessions[random]);
+    if (valkyr) {
+      professionsAssigned.push('Special Cleric');
+    }
+  } else if (valkyr) {
+    professionsAssigned.push('Special Cleric');
   } else {
     professionsAssigned.push('None');
-  }
-
-  if (valkyr) {
-    professionsAssigned.push('Special Cleric');
   }
 
   return professionsAssigned;
