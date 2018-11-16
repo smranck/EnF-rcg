@@ -17,6 +17,8 @@ export default class Character extends React.Component {
       qualities,
       attributes,
       totalCharacters,
+      desiredLevel,
+      changeDesiredLevel,
       defaultStats,
       nativeRace,
       handleCheckmarkForms,
@@ -90,6 +92,8 @@ export default class Character extends React.Component {
             </table>
             <div className="clearer" />
             <Settings
+              desiredLevel={desiredLevel}
+              changeDesiredLevel={e => changeDesiredLevel(e)}
               defaultStats={defaultStats}
               nativeRace={nativeRace}
               handleCheckmarkForms={e => handleCheckmarkForms(e)}
@@ -169,7 +173,7 @@ export default class Character extends React.Component {
                 {race === 'Valkyr Aspect' ? (
                   <tr>
                     <td>Valkyr Aspect Special Profession</td>
-                    <td>{professions[1]}</td>
+                    <td>{professions[0]}</td>
                   </tr>
                 ) : null}
                 {traits.map(trait => (

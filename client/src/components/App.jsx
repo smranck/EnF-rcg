@@ -8,6 +8,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       maxLevel: 20,
+      desiredLevel: false,
       originalsOnly: false,
       nativeRace: false,
       rankQualities: false,
@@ -36,6 +37,15 @@ export default class App extends React.Component {
     };
   }
 
+  changeDesiredLevel(event) {
+    const { target } = event;
+    const { name, value } = target;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
   handleCheckmarkForms(event) {
     const { target } = event;
     const value = !!target.checked;
@@ -58,6 +68,7 @@ export default class App extends React.Component {
   generateCharacter() {
     let {
       maxLevel,
+      desiredLevel,
       originalsOnly,
       nativeRace,
       rankQualities,
@@ -78,6 +89,7 @@ export default class App extends React.Component {
 
     let character = Helpers.createCharacter(
       maxLevel,
+      desiredLevel,
       originalsOnly,
       nativeRace,
       rankQualities,
@@ -132,6 +144,7 @@ export default class App extends React.Component {
   render() {
     const {
       level,
+      desiredLevel,
       race,
       characterClass,
       classPath,
@@ -176,6 +189,8 @@ export default class App extends React.Component {
               attributes={attributes}
               qualities={qualities}
               totalCharacters={totalCharacters}
+              desiredLevel={desiredLevel}
+              changeDesiredLevel={e => this.changeDesiredLevel(e)}
               defaultStats={defaultStats}
               nativeRace={nativeRace}
               handleCheckmarkForms={e => this.handleCheckmarkForms(e)}
@@ -187,6 +202,8 @@ export default class App extends React.Component {
         ) : (
           <div>
             <Settings
+              desiredLevel={desiredLevel}
+              changeDesiredLevel={e => this.changeDesiredLevel(e)}
               defaultStats={defaultStats}
               nativeRace={nativeRace}
               handleCheckmarkForms={e => this.handleCheckmarkForms(e)}

@@ -136,7 +136,7 @@ const chooseRace = (originalsOnly = false) => {
   return [num, races[num]];
 };
 
-const chooseLevel = (max = 20) => Math.max(Math.ceil(Math.random() * max), 1);
+const chooseLevel = (max = 20, desiredLevel = false) => desiredLevel || Math.max(Math.ceil(Math.random() * max), 1);
 
 // returns an array of attribute values in a random order
 const createAttributes = (savant = false, minimumTotal = 20, defaultStats = true) => {
@@ -739,6 +739,7 @@ const assignPersonality = () => {
 
 const createCharacter = (
   maxLevel = 20,
+  desiredLevel = false,
   originalsOnly = false,
   nativeRace = false,
   rankQualities = false,
@@ -756,7 +757,7 @@ const createCharacter = (
   defaultStats = true,
   professionLikelihood = 'maybe',
 ) => {
-  let level = chooseLevel(maxLevel);
+  let level = chooseLevel(maxLevel, desiredLevel);
   let race = chooseRace(originalsOnly);
   let characterClass = chooseClass(nativeRace ? race : false);
   let native = checkForNativeClass(race[1], characterClass);
