@@ -288,11 +288,11 @@ const chooseTraits = (level = 1, hardworking = false, nativeClassBonus = false) 
     if (hash[whichTrait]) {
       console.log('Dupe traits');
     } else if (whichTrait) {
-      // not 0. 0 is savant
+      // 0 is savant. Not 0 ends up here
       traits.push(traitList[whichTrait]);
       hash[whichTrait] = true;
-    } else {
-      // savant case
+    } else if (traits.length < 2) {
+      // savant can only be assigned as one of the first 2 traits
       savant = true;
     }
   }
