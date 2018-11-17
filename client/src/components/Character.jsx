@@ -14,6 +14,7 @@ export default class Character extends React.Component {
       professions,
       raceTrait,
       traits,
+      skills,
       qualities,
       attributes,
       totalCharacters,
@@ -129,6 +130,19 @@ export default class Character extends React.Component {
                 <tr>
                   <td>Class</td>
                   <td>{characterClass}</td>
+                </tr>
+                <tr>
+                  <td>Skills</td>
+                  <td>
+                    {skills.reduce((result, item, index) => {
+                      let added = result;
+                      added += item;
+                      if (index < skills.length - 1) {
+                        added += ', ';
+                      }
+                      return added;
+                    }, '')}
+                  </td>
                 </tr>
                 <tr>
                   <td>Class Path</td>

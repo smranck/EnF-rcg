@@ -27,6 +27,7 @@ export default class App extends React.Component {
       level: 1,
       race: '',
       raceTrait: [],
+      skills: [],
       traits: '',
       qualities: {},
       attributes: {},
@@ -107,6 +108,8 @@ export default class App extends React.Component {
       defaultStats,
       professionLikelihood,
     );
+    console.log(character);
+
     const {
       level,
       race,
@@ -119,8 +122,9 @@ export default class App extends React.Component {
       traits,
       qualities,
       attributes,
+      skills,
     } = character;
-    console.log(character);
+
     let characterGenerated = true;
     let { totalCharacters } = this.state;
     totalCharacters += 1;
@@ -134,6 +138,7 @@ export default class App extends React.Component {
       professions,
       raceTrait,
       traits,
+      skills,
       qualities,
       attributes,
       characterGenerated,
@@ -153,6 +158,7 @@ export default class App extends React.Component {
       professions,
       raceTrait,
       traits,
+      skills,
       qualities,
       attributes,
       characterGenerated,
@@ -186,6 +192,7 @@ export default class App extends React.Component {
               professions={professions}
               raceTrait={raceTrait}
               traits={traits}
+              skills={skills}
               attributes={attributes}
               qualities={qualities}
               totalCharacters={totalCharacters}
