@@ -19,14 +19,13 @@ body {
 }
 
 .container {
-  border-radius: 4px;
+  border-radius: 2px;
   text-align: center;
 }
 
 .generate-character-button {
   color: #fff;
   background-color: #272727;
-  border-color: #272727;
   padding: 1% 2%;
   margin: 1%;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -36,11 +35,10 @@ body {
   font-style: normal;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: #fff;
-  background-color: #272727;
-  border-color: #b389c2;
+  /* border-color: #b389c2; */
+  border-color: #674ea7;
   border-width: medium;
-  border-radius: 4px;
+  border-radius: 2px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
@@ -74,8 +72,8 @@ table {
   margin-right: auto;
   color: black;
   text-align: left;
-  border: 1px solid black;
-  border-radius: 10px;
+  border: 1px solid #674ea7;
+  border-radius: 2px;
   padding: 1%;
   background-color: white;
 }
@@ -89,8 +87,8 @@ table {
   margin-top: 25%;
   color: black;
   text-align: left;
-  border: 1px solid black;
-  border-radius: 10px;
+  border: 1px solid #674ea7;
+  border-radius: 2px;
   padding: 1%;
   background-color: rgb(234, 234, 234);
   text-align: center;
@@ -129,6 +127,7 @@ td {
 }
 
 tr:nth-child(even) {
+  /* background: rgb(218, 210, 233); // color from official site*/
   background: rgb(234, 234, 234);
   /* background: rgb(231, 213, 226);
   background: rgb(255, 255, 255); */
