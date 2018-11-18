@@ -2,6 +2,7 @@ import React from 'react';
 import Helpers from '../CharacterCreationHelpers';
 import Character from './Character';
 import Settings from './Settings';
+import Footer from './Footer';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -220,28 +221,7 @@ export default class App extends React.Component {
             />
           </div>
         )}
-        <div className="footer">
-          <div>
-            Random Character Generator for
-            {' '}
-            <a href="https://sinowl.net/ebbandflow/" rel="noopener noreferrer" target="_blank">
-              the Game of Ebb and Flow
-            </a>
-            {', '}
-            source code available
-            {' '}
-            <a href="https://github.com/smranck/EnF-rcg" rel="noopener noreferrer" target="_blank">
-              here
-            </a>
-          </div>
-          <div className="smaller">
-            *While Default Stats is selected, Attributes will sum to 40 and Qualities will sum to 24
-          </div>
-          <div className="smaller">
-            **While Native Classes Only is selected, assigned class will always be native to
-            assigned race
-          </div>
-        </div>
+        <Footer />
       </div>
     );
   }
