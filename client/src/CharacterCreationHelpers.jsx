@@ -343,7 +343,8 @@ const chooseClass = (race = false) => {
 };
 
 // function to randomly assign skills. Returns a sorted array. Skills are 1 indexed
-// eventually handle secondary classes
+// eventually handle secondary classes?
+// modifier is anything that allows additional skills - scrolls, etc.
 const chooseSkills = (level = 1, modifier = 0) => {
   // totalSkillCount reflects total skills needed
   let totalSkillCount = 2;
@@ -377,8 +378,16 @@ const chooseSkills = (level = 1, modifier = 0) => {
   skills[random] = random;
   assignedSkills.push(random);
 
-  // if more skills are needed, up to 4, they could be advanced skills
+  // third skill, if necessary, must be basic
   if (totalSkillCount > 2) {
+    while (skills[random]) {
+      random = Math.ceil(Math.random() * 6);
+    }
+    skills[random] = random;
+    assignedSkills.push(random);
+  }
+  // Additional skills can also be advanced. Skill after 2 advanced can also be dailies
+  if (totalSkillCount > 3) {
     // assign skills until the correct total have been assigned
     while (assignedSkills.length < totalSkillCount) {
       // create a random value that hasn't been assigned yet
