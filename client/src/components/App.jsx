@@ -13,6 +13,7 @@ export default class App extends React.Component {
       originalsOnly: false,
       desiredClass: false,
       nativeRace: false,
+      desiredRace: false,
       rankQualities: false,
       obs: 1,
       char: 1,
@@ -58,6 +59,15 @@ export default class App extends React.Component {
     });
   }
 
+  changeDesiredRace(event) {
+    const { target } = event;
+    const { name, value } = target;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
   handleCheckmarkForms(event) {
     const { target } = event;
     const value = !!target.checked;
@@ -84,6 +94,7 @@ export default class App extends React.Component {
       originalsOnly,
       desiredClass,
       nativeRace,
+      desiredRace,
       rankQualities,
       obs,
       char,
@@ -104,6 +115,7 @@ export default class App extends React.Component {
       maxLevel,
       desiredLevel,
       originalsOnly,
+      desiredRace,
       desiredClass,
       nativeRace,
       rankQualities,
@@ -164,6 +176,7 @@ export default class App extends React.Component {
       level,
       desiredLevel,
       desiredClass,
+      desiredRace,
       race,
       characterClass,
       classPath,
@@ -214,6 +227,8 @@ export default class App extends React.Component {
               changeDesiredClass={e => this.changeDesiredClass(e)}
               desiredLevel={desiredLevel}
               changeDesiredLevel={e => this.changeDesiredLevel(e)}
+              desiredRace={desiredRace}
+              changeDesiredRace={e => this.changeDesiredRace(e)}
               defaultStats={defaultStats}
               nativeRace={nativeRace}
               handleCheckmarkForms={e => this.handleCheckmarkForms(e)}
@@ -229,6 +244,8 @@ export default class App extends React.Component {
               changeDesiredClass={e => this.changeDesiredClass(e)}
               desiredLevel={desiredLevel}
               changeDesiredLevel={e => this.changeDesiredLevel(e)}
+              desiredRace={desiredRace}
+              changeDesiredRace={e => this.changeDesiredRace(e)}
               defaultStats={defaultStats}
               nativeRace={nativeRace}
               handleCheckmarkForms={e => this.handleCheckmarkForms(e)}

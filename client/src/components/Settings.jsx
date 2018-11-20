@@ -8,6 +8,8 @@ export default class Character extends React.Component {
       changeDesiredClass,
       desiredLevel,
       changeDesiredLevel,
+      desiredRace,
+      changeDesiredRace,
       defaultStats,
       nativeRace,
       handleCheckmarkForms,
@@ -22,7 +24,7 @@ export default class Character extends React.Component {
         <br />
         <form>
           <label>
-            Desired Level?
+            Level
             <select
               value={desiredLevel || 'Any'}
               name="desiredLevel"
@@ -53,7 +55,32 @@ export default class Character extends React.Component {
           </label>
           <br />
           <label>
-            Desired Class?
+            Race
+            <select
+              value={desiredRace || 'Any'}
+              name="desiredRace"
+              onChange={e => changeDesiredRace(e)}
+            >
+              <option value="False">Any</option>
+              <option value="0">Arkhan</option>
+              <option value="1">Equirion</option>
+              <option value="2">Fibblan</option>
+              <option value="3">Human</option>
+              <option value="4">Iquoran</option>
+              <option value="5">Khibblan</option>
+              <option value="6">Chezan</option>
+              <option value="7">Cubi</option>
+              <option value="8">Felia</option>
+              <option value="9">Jarrith</option>
+              <option value="10">Lich</option>
+              <option value="11">Merfolk</option>
+              <option value="12">True Banshee</option>
+              <option value="13">Valkyr Aspect</option>
+            </select>
+          </label>
+          <br />
+          <label>
+            Class
             <select
               value={desiredClass || 'Any'}
               name="desiredClass"
