@@ -314,9 +314,14 @@ const chooseTraits = (level = 1, hardworking = false, nativeClassBonus = false) 
 };
 
 // function to randomly assign a class. Race should be an array
-const chooseClass = (race = false) => {
+// Returns a string
+const chooseClass = (race = false, desiredClass = false) => {
   let assignedClass;
   let randomNumber;
+  // if desired class, it's easy
+  if (desiredClass) {
+    return classList[desiredClass];
+  }
   // Race is only given if native is desired. Could later weight native classes.
   // race prop such that [raceNumber, 'race']
   if (race[0] < 4) {
@@ -750,6 +755,7 @@ const createCharacter = (
   maxLevel = 20,
   desiredLevel = false,
   originalsOnly = false,
+  desiredClass = false,
   nativeRace = false,
   rankQualities = false,
   obs = 1,
@@ -768,7 +774,7 @@ const createCharacter = (
 ) => {
   let level = chooseLevel(maxLevel, desiredLevel);
   let race = chooseRace(originalsOnly);
-  let characterClass = chooseClass(nativeRace ? race : false);
+  let characterClass = chooseClass(nativeRace ? race : false, desiredClass);
   let native = checkForNativeClass(race[1], characterClass);
   let nativeClassBonus = native ? provideNativeClassBonus(characterClass) : false;
   let traits = chooseTraits(
