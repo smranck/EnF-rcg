@@ -18,6 +18,8 @@ export default class Character extends React.Component {
       qualities,
       attributes,
       totalCharacters,
+      desiredClass,
+      changeDesiredClass,
       desiredLevel,
       changeDesiredLevel,
       defaultStats,
@@ -93,6 +95,8 @@ export default class Character extends React.Component {
             </table>
             <div className="clearer" />
             <Settings
+              desiredClass={desiredClass}
+              changeDesiredClass={changeDesiredClass}
               desiredLevel={desiredLevel}
               changeDesiredLevel={e => changeDesiredLevel(e)}
               defaultStats={defaultStats}

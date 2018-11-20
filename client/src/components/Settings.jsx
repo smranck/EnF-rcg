@@ -4,6 +4,8 @@ import React from 'react';
 export default class Character extends React.Component {
   render() {
     const {
+      desiredClass,
+      changeDesiredClass,
       desiredLevel,
       changeDesiredLevel,
       defaultStats,
@@ -47,6 +49,37 @@ export default class Character extends React.Component {
               <option value="18">18</option>
               <option value="19">19</option>
               <option value="20">20</option>
+            </select>
+          </label>
+          <br />
+          <label>
+            Desired Class?
+            <select
+              value={desiredClass || 'Any'}
+              name="desiredClass"
+              onChange={e => changeDesiredClass(e)}
+            >
+              <option value="False">Any</option>
+              <option value="1">Artillery Jockey</option>
+              <option value="2">Crush Avatar</option>
+              <option value="3">Doom Harbinger</option>
+              <option value="4">Infernal Reaper</option>
+              <option value="5">Arcane Ranger</option>
+              <option value="6">Blood Letterer</option>
+              <option value="7">Cross Assailant</option>
+              <option value="8">Essence Abolisher</option>
+              <option value="9">Divine Sentinel</option>
+              <option value="10">Flow Assimilator</option>
+              <option value="11">Flow Rupturer</option>
+              <option value="12">Soul Morpher</option>
+              <option value="13">Crusade Maestro</option>
+              <option value="14">Empyreal Ronin</option>
+              <option value="15">Noble Gallant</option>
+              <option value="16">Runic Chevalier</option>
+              <option value="17">Mystic Gunslinger</option>
+              <option value="18">Resolute Champion</option>
+              <option value="19">Glorious Hunter</option>
+              <option value="20">Twilight Sentry</option>
             </select>
           </label>
           <br />

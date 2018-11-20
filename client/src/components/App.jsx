@@ -40,6 +40,15 @@ export default class App extends React.Component {
     };
   }
 
+  changeDesiredClass(event) {
+    const { target } = event;
+    const { name, value } = target;
+
+    this.setState({
+      [name]: value,
+    });
+  }
+
   changeDesiredLevel(event) {
     const { target } = event;
     const { name, value } = target;
@@ -154,6 +163,7 @@ export default class App extends React.Component {
     const {
       level,
       desiredLevel,
+      desiredClass,
       race,
       characterClass,
       classPath,
@@ -200,6 +210,8 @@ export default class App extends React.Component {
               attributes={attributes}
               qualities={qualities}
               totalCharacters={totalCharacters}
+              desiredClass={desiredClass}
+              changeDesiredClass={e => this.changeDesiredClass(e)}
               desiredLevel={desiredLevel}
               changeDesiredLevel={e => this.changeDesiredLevel(e)}
               defaultStats={defaultStats}
@@ -213,6 +225,8 @@ export default class App extends React.Component {
         ) : (
           <div>
             <Settings
+              desiredClass={desiredClass}
+              changeDesiredClass={e => this.changeDesiredClass(e)}
               desiredLevel={desiredLevel}
               changeDesiredLevel={e => this.changeDesiredLevel(e)}
               defaultStats={defaultStats}
