@@ -11,7 +11,7 @@ export default class Character extends React.Component {
       desiredRace,
       changeDesiredRace,
       defaultStats,
-      nativeRace,
+      nativeClassDesired,
       handleCheckmarkForms,
       professionLikelihood,
       handleSelectorForms,
@@ -121,13 +121,13 @@ export default class Character extends React.Component {
             />
           </label>
           <br />
-          <label htmlFor="nativeRaceCheckbox">
+          <label htmlFor="nativeClassDesiredCheckbox">
             Native Class?
             <sup>**</sup>
             <input
-              name="nativeRace"
+              name="nativeClassDesired"
               type="checkbox"
-              checked={nativeRace}
+              checked={nativeClassDesired}
               onChange={e => handleCheckmarkForms(e)}
             />
           </label>

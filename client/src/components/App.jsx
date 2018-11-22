@@ -12,7 +12,7 @@ export default class App extends React.Component {
       desiredLevel: false,
       originalsOnly: false,
       desiredClass: false,
-      nativeRace: false,
+      nativeClassDesired: false,
       desiredRace: false,
       rankQualities: false,
       obs: 1,
@@ -47,6 +47,7 @@ export default class App extends React.Component {
 
     this.setState({
       [name]: value,
+      nativeClassDesired: false,
     });
   }
 
@@ -72,9 +73,13 @@ export default class App extends React.Component {
     const { target } = event;
     const value = !!target.checked;
     const { name } = target;
-
+    let { desiredClass } = this.state;
+    if (name === 'nativeClassDesired') {
+      desiredClass = false;
+    }
     this.setState({
       [name]: value,
+      desiredClass,
     });
   }
 
@@ -93,7 +98,7 @@ export default class App extends React.Component {
       desiredLevel,
       originalsOnly,
       desiredClass,
-      nativeRace,
+      nativeClassDesired,
       desiredRace,
       rankQualities,
       obs,
@@ -117,7 +122,7 @@ export default class App extends React.Component {
       originalsOnly,
       desiredRace,
       desiredClass,
-      nativeRace,
+      nativeClassDesired,
       rankQualities,
       obs,
       char,
@@ -191,7 +196,7 @@ export default class App extends React.Component {
       characterGenerated,
       totalCharacters,
       defaultStats,
-      nativeRace,
+      nativeClassDesired,
       professionLikelihood,
     } = this.state;
 
@@ -230,7 +235,7 @@ export default class App extends React.Component {
               desiredRace={desiredRace}
               changeDesiredRace={e => this.changeDesiredRace(e)}
               defaultStats={defaultStats}
-              nativeRace={nativeRace}
+              nativeClassDesired={nativeClassDesired}
               handleCheckmarkForms={e => this.handleCheckmarkForms(e)}
               professionLikelihood={professionLikelihood}
               handleSelectorForms={e => this.handleSelectorForms(e)}
@@ -247,7 +252,7 @@ export default class App extends React.Component {
               desiredRace={desiredRace}
               changeDesiredRace={e => this.changeDesiredRace(e)}
               defaultStats={defaultStats}
-              nativeRace={nativeRace}
+              nativeClassDesired={nativeClassDesired}
               handleCheckmarkForms={e => this.handleCheckmarkForms(e)}
               professionLikelihood={professionLikelihood}
               handleSelectorForms={e => this.handleSelectorForms(e)}

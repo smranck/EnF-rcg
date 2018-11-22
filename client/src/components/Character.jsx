@@ -25,7 +25,7 @@ export default class Character extends React.Component {
       desiredRace,
       changeDesiredRace,
       defaultStats,
-      nativeRace,
+      nativeClassDesired,
       handleCheckmarkForms,
       professionLikelihood,
       handleSelectorForms,
@@ -104,7 +104,7 @@ export default class Character extends React.Component {
               desiredRace={desiredRace}
               changeDesiredRace={e => changeDesiredRace(e)}
               defaultStats={defaultStats}
-              nativeRace={nativeRace}
+              nativeClassDesired={nativeClassDesired}
               handleCheckmarkForms={e => handleCheckmarkForms(e)}
               professionLikelihood={professionLikelihood}
               handleSelectorForms={e => handleSelectorForms(e)}
