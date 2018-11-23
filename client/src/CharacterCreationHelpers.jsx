@@ -108,7 +108,7 @@ const rollDice = (numberOfDice, sides) => {
 };
 
 // returns an array [number, 'race']
-const chooseRace = (originalsOnly = false, desiredRace = false) => {
+const chooseRace = (desiredRace = false) => {
   let races = {
     0: 'Arkhan',
     1: 'Equirion',
@@ -128,9 +128,11 @@ const chooseRace = (originalsOnly = false, desiredRace = false) => {
 
   let num;
   if (desiredRace) {
-    num = desiredRace;
-  } else if (originalsOnly) {
-    num = Math.floor(Math.random() * 6);
+    if (desiredRace === 'originalsOnly') {
+      num = Math.floor(Math.random() * 6);
+    } else {
+      num = desiredRace;
+    }
   } else {
     num = Math.floor(Math.random() * 14);
   }
@@ -756,7 +758,6 @@ const assignPersonality = () => {
 const createCharacter = (
   maxLevel = 20,
   desiredLevel = false,
-  originalsOnly = false,
   desiredRace = false,
   desiredClass = false,
   nativeClassDesired = false,
@@ -776,7 +777,7 @@ const createCharacter = (
   professionLikelihood = 'maybe',
 ) => {
   let level = chooseLevel(maxLevel, desiredLevel);
-  let race = chooseRace(originalsOnly, desiredRace);
+  let race = chooseRace(desiredRace);
   let characterClass = chooseClass(nativeClassDesired ? race : false, desiredClass);
   let native = checkForNativeClass(race[1], characterClass);
   let nativeClassBonus = native ? provideNativeClassBonus(characterClass) : false;

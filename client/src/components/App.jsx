@@ -10,7 +10,6 @@ export default class App extends React.Component {
     this.state = {
       maxLevel: 20,
       desiredLevel: false,
-      originalsOnly: false,
       desiredClass: false,
       nativeClassDesired: false,
       desiredRace: false,
@@ -96,7 +95,6 @@ export default class App extends React.Component {
     let {
       maxLevel,
       desiredLevel,
-      originalsOnly,
       desiredClass,
       nativeClassDesired,
       desiredRace,
@@ -119,7 +117,6 @@ export default class App extends React.Component {
     let character = Helpers.createCharacter(
       maxLevel,
       desiredLevel,
-      originalsOnly,
       desiredRace,
       desiredClass,
       nativeClassDesired,

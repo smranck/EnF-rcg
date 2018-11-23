@@ -62,6 +62,7 @@ export default class Character extends React.Component {
               onChange={e => changeDesiredRace(e)}
             >
               <option value="False">Any</option>
+              <option value="originalsOnly">Original 6 Only</option>
               <option value="0">Arkhan</option>
               <option value="1">Equirion</option>
               <option value="2">Fibblan</option>
