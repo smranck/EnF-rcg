@@ -1,3 +1,4 @@
+// List of classes for later use
 const classList = {
   1: 'Artillery Jockey',
   2: 'Crush Avatar',
@@ -21,6 +22,7 @@ const classList = {
   20: 'Twilight Sentry',
 };
 
+// Numbers in array correspond to classList
 const nativeClasses = {
   Arkhan: [1, 2, 3, 4],
   Equirion: [5, 6, 7, 8],
@@ -38,6 +40,7 @@ const nativeClasses = {
   'Valkyr Aspect': [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
 };
 
+// List of all traits in game
 const traitList = [
   'Savant of All Trades',
   'Adept Chef',
@@ -140,6 +143,7 @@ const chooseRace = (desiredRace = false) => {
   return [num, races[num]];
 };
 
+// function that assigns a level and returns it
 const chooseLevel = (max = 20, desiredLevel = false) => desiredLevel || Math.max(Math.ceil(Math.random() * max), 1);
 
 // returns an array of attribute values in a random order
