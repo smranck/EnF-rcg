@@ -276,22 +276,29 @@ const createQualities = (savant = false, minimumTotal = 12, defaultStats = true)
 
 // function to choose traits randomly. Returns an array of traits.
 const chooseTraits = (level = 1, hardworking = false, nativeClassBonus = false) => {
-  let number = 2 + Math.floor(level / 7);
+  // the minimum is 2 traits
+  let totalTraits = 2;
+  // gain an extra trait at levels divisible by 7
+  totalTraits += Math.floor(level / 7);
+  // gain another trait at level 20
   if (level === 20) {
-    number += 1;
+    totalTraits += 1;
   }
+  // gain 2 more traits if a human
   if (hardworking) {
-    number += 2;
+    totalTraits += 2;
   }
+  // some native class bonuses give an extra trait
   if (nativeClassBonus) {
-    number += 1;
+    totalTraits += 1;
   }
+
   let traits = [];
   let savant = false;
   // savant will not be in the hash - no 0;
   let hash = {};
   // if savant, there can be no other traits
-  while (traits.length < number && !savant) {
+  while (traits.length < totalTraits && !savant) {
     let whichTrait = Math.floor(Math.random() * traitList.length);
     if (hash[whichTrait]) {
       console.log('Dupe traits');
@@ -305,6 +312,7 @@ const chooseTraits = (level = 1, hardworking = false, nativeClassBonus = false) 
     }
   }
 
+  // put the right strings into the traits array
   if (savant) {
     traits = ['Savant of All Trades'];
   } else if (hardworking && nativeClassBonus) {
