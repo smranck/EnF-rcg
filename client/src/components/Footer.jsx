@@ -18,13 +18,6 @@ export default class Footer extends React.Component {
             here
           </a>
         </div>
-        <div className="smaller">
-          *While Default Stats is selected, Attributes will sum to 40 and Qualities will sum to 24
-        </div>
-        <div className="smaller">
-          **While Native Classes Only is selected, assigned class will always be native to assigned
-          race
-        </div>
       </div>
     );
   }

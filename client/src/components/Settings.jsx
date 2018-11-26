@@ -112,8 +112,13 @@ export default class Character extends React.Component {
           </label>
           <br />
           <label htmlFor="defaultStatsCheckbox">
-            Default Stats?
-            <sup>*</sup>
+            Default Stats
+            <sup className="tooltip">
+              [?]
+              <span className="tooltiptext">
+                While selected, Attributes will sum to 40 and Qualities will sum to 24
+              </span>
+            </sup>
             <input
               name="defaultStats"
               type="checkbox"
@@ -123,8 +128,13 @@ export default class Character extends React.Component {
           </label>
           <br />
           <label htmlFor="nativeClassDesiredCheckbox">
-            Native Class?
-            <sup>**</sup>
+            Native Class
+            <sup className="tooltip">
+              [?]
+              <span className="tooltiptext">
+                Select to limit assignable classes to those native to assigned race
+              </span>
+            </sup>
             <input
               name="nativeClassDesired"
               type="checkbox"
