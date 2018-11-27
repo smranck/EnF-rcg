@@ -25,6 +25,7 @@ export default class Character extends React.Component {
         <form>
           <label>
             Level
+            <span className="buffer" />
             <select
               value={desiredLevel || 'Any'}
               name="desiredLevel"
@@ -56,6 +57,7 @@ export default class Character extends React.Component {
           <br />
           <label>
             Race
+            <span className="buffer" />
             <select
               value={desiredRace || 'Any'}
               name="desiredRace"
@@ -82,6 +84,7 @@ export default class Character extends React.Component {
           <br />
           <label>
             Class
+            <span className="buffer" />
             <select
               value={desiredClass || 'Any'}
               name="desiredClass"
@@ -145,6 +148,7 @@ export default class Character extends React.Component {
           <br />
           <label>
             Profession?
+            <span className="buffer" />
             <select
               value={professionLikelihood}
               name="professionLikelihood"
