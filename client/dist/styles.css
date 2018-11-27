@@ -101,6 +101,7 @@ table {
 
 .pregenerated {
   display: inline-block;
+  min-width: 15%;
 }
 
 .statHeader {
@@ -204,4 +205,8 @@ th {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+.buffer {
+  margin: 5%;
 }
