@@ -86,7 +86,6 @@ table {
   margin-right: auto;
   margin-top: 25%;
   color: black;
-  text-align: left;
   border: 1px solid #674ea7;
   border-radius: 2px;
   padding: 1%;
@@ -101,6 +100,7 @@ table {
 
 .pregenerated {
   display: inline-block;
+  min-width: 15%;
 }
 
 .statHeader {
@@ -159,10 +159,11 @@ th {
 .tooltip {
   position: relative;
   display: inline-block;
-  margin-right: 25%;
+  /* margin-right: 25%; */
   /*border-bottom: 1px dotted black; If you want dots under the hoverable text*/
   color: blue;
   font-size: xx-small;
+  float: left;
 }
 
 /* Tooltip text */
@@ -204,4 +205,16 @@ th {
 .tooltip:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+select {
+  float: right;
+}
+
+input {
+  float: right;
+}
+
+.left {
+  float: left;
 }
