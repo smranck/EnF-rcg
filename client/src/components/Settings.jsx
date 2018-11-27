@@ -24,7 +24,7 @@ export default class Character extends React.Component {
         <br />
         <form>
           <label>
-            Level
+            <span className="left">Level</span>
             <select
               value={desiredLevel || 'Any'}
               name="desiredLevel"
@@ -55,7 +55,7 @@ export default class Character extends React.Component {
           </label>
           <br />
           <label>
-            Race
+            <span className="left">Race</span>
             <select
               value={desiredRace || 'Any'}
               name="desiredRace"
@@ -81,7 +81,7 @@ export default class Character extends React.Component {
           </label>
           <br />
           <label>
-            Class
+            <span className="left">Class</span>
             <select
               value={desiredClass || 'Any'}
               name="desiredClass"
@@ -112,9 +112,9 @@ export default class Character extends React.Component {
           </label>
           <br />
           <label htmlFor="defaultStatsCheckbox">
-            Default Stats
+            <span className="left">Default Stats</span>
             <sup className="tooltip">
-              [?]
+              <span>[?]</span>
               <span className="tooltiptext">
                 While selected, Attributes will sum to 40 and Qualities will sum to 24
               </span>
@@ -128,9 +128,9 @@ export default class Character extends React.Component {
           </label>
           <br />
           <label htmlFor="nativeClassDesiredCheckbox">
-            Native Class
+            <span className="left">Native Class</span>
             <sup className="tooltip">
-              [?]
+              <span>[?]</span>
               <span className="tooltiptext">
                 Select to limit assignable classes to those native to assigned race
               </span>
@@ -144,7 +144,7 @@ export default class Character extends React.Component {
           </label>
           <br />
           <label>
-            Profession?
+            <span className="left">Profession</span>
             <select
               value={professionLikelihood}
               name="professionLikelihood"
