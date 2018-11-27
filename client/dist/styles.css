@@ -207,6 +207,6 @@ th {
   opacity: 1;
 }
 
-.buffer {
-  margin: 5%;
+select {
+  margin-left: 10%;
 }
