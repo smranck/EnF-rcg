@@ -603,6 +603,14 @@ const assignRaceTrait = (race, savant = false) => {
   return [specialTraits[race], raceTraits[race][random]];
 };
 
+// function to handle special cases that grant extra skills
+const assignSpecialSkill = (trait = '', skills = []) => {
+  /* 
+    Outline:
+    
+  */
+}
+
 // Function to assign a profession. Returns an array.
 const assignProfession = (valkyr = false, likelihood = 'maybe') => {
   // If no profession is desired, assign it only to valkyrs
