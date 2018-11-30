@@ -135,7 +135,7 @@ export default class Character extends React.Component {
                   <td>Race Trait</td>
                   <td>{raceTrait[1] || traits[0]}</td>
                 </tr>
-                {raceTrait.length === 3 ? (
+                {raceTrait.length === 4 ? (
                   <tr>
                     <td>Inherited Trait</td>
                     <td>{raceTrait[2]}</td>

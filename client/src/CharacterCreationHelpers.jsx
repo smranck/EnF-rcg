@@ -603,9 +603,13 @@ const assignRaceTrait = (race, savant = false) => {
   if (race === 'Iquoran' && random === 2) {
     random = Math.floor(Math.random() * 8);
     if (random <= 3) {
-      traits[2] = raceTraits['Equirion'][random];
+      let inheritedTrait = raceTraits['Equirion'][random];
+      traits[2] = 'Equirion: '.concat(inheritedTrait);
+      traits[3] = inheritedTrait;
     } else {
-      traits[2] = raceTraits['Human'][random - 4];
+      let inheritedTrait = raceTraits['Human'][random - 4];
+      traits[2] = 'Human: '.concat(inheritedTrait);
+      traits[3] = inheritedTrait;
     }
   }
 
@@ -613,11 +617,13 @@ const assignRaceTrait = (race, savant = false) => {
   if (race === 'Khibblan' && random === 1) {
     random = Math.floor(Math.random() * 8);
     if (random <= 3) {
-      // Arkhan
-      traits[2] = raceTraits['Arkhan'][random];
+      let inheritedTrait = raceTraits['Arkhan'][random];
+      traits[2] = 'Arkhan: '.concat(inheritedTrait);
+      traits[3] = inheritedTrait;
     } else {
-      // Fibblan
-      traits[2] = raceTraits['Fibblan'][random - 4];
+      let inheritedTrait = raceTraits['Fibblan'][random - 4];
+      traits[2] = 'Fibblan: '.concat(inheritedTrait);
+      traits[3] = inheritedTrait;
     }
   }
 
