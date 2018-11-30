@@ -558,7 +558,7 @@ const assignRaceTrait = (race, savant = false) => {
       'Halfkin Inheritance',
       'Talented Wielder',
     ],
-    Khibblan: ['Acclimated Hide', 'Beastkin Inheritance', 'Exploit Strengths'],
+    Khibblan: ['Acclimated Hide', 'Beastkin Inheritance', 'Exploit Strengths', 'Primeval Harmony'],
     Chezan: ['Bloodkin Inheritance', 'Exertive Energy', 'Momentary Lunacy', 'Redirect Exhaustion'],
     Cubi: ['Dark Embrace', 'Love Tap', 'Magical Aptitude', 'Seductive Appearance'],
     Felia: ['Felia Reflexes', 'Natural Born Hunters', 'Predatory Quirks', 'Scrappy Fighter'],
@@ -594,13 +594,34 @@ const assignRaceTrait = (race, savant = false) => {
   if (savant) {
     return [specialTraits[race], false];
   }
-  // it's 4 for the core 4, 3 for the halfkin,
-  let possibleChoices = 4;
-  if (race === 'Iquoran' || race === 'Khibblan') {
-    possibleChoices -= 1;
+
+  let random = Math.floor(Math.random() * 4);
+
+  let traits = [specialTraits[race], raceTraits[race][random]];
+
+  // handle specific case for Iquoran Inheritance
+  if (race === 'Iquoran' && random === 2) {
+    random = Math.floor(Math.random() * 8);
+    if (random <= 3) {
+      traits[2] = raceTraits['Equirion'][random];
+    } else {
+      traits[2] = raceTraits['Human'][random - 4];
+    }
   }
-  let random = Math.floor(Math.random() * possibleChoices);
-  return [specialTraits[race], raceTraits[race][random]];
+
+  // handle specific case for Khibblan Inheritance
+  if (race === 'Khibblan' && random === 1) {
+    random = Math.floor(Math.random() * 8);
+    if (random <= 3) {
+      // Arkhan
+      traits[2] = raceTraits['Arkhan'][random];
+    } else {
+      // Fibblan
+      traits[2] = raceTraits['Fibblan'][random - 4];
+    }
+  }
+
+  return traits;
 };
 
 // function to handle special cases that grant extra skills
@@ -608,6 +629,7 @@ const assignSpecialSkill = (trait = '', skills = []) => {
   /* 
     Outline:
     
+    Must return skills array
   */
 }
 
