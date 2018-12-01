@@ -204,6 +204,15 @@ const createAttributes = (savant = false, minimumTotal = 20, defaultStats = true
         sum += 1;
       }
     }
+  } else if (sum < minimumTotal) {
+    // 60 should be max, handle?
+    while (sum < minimumTotal) {
+      let indexToChange = Math.floor(Math.random() * attributes.length);
+      if (attributes[indexToChange] < 12) {
+        attributes[indexToChange] += 1;
+        sum += 1;
+      }
+    }
   }
 
   return attributes;
@@ -366,7 +375,7 @@ const chooseClass = (race = false, desiredClass = false) => {
 // function to randomly assign skills. Returns a sorted array. Skills are 1 indexed
 // eventually handle secondary classes?
 // modifier is anything that allows additional skills - scrolls, etc.
-const chooseSkills = (level = 1, modifier = 0) => {
+const assignSkills = (level = 1, modifier = 0) => {
   // totalSkillCount reflects total skills needed
   let totalSkillCount = 2;
   let assignedSkills = [];
@@ -861,7 +870,7 @@ const createCharacter = (
     minimumTotalAttributes,
     defaultStats,
   );
-  let skills = chooseSkills(level);
+  let skills = assignSkills(level);
   let professions = assignProfession(race[1] === 'Valkyr Aspect', professionLikelihood);
   let classPath = chooseClassPath(characterClass);
   let personality = assignPersonality();
