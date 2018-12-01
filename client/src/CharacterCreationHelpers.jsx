@@ -278,6 +278,15 @@ const createQualities = (savant = false, minimumTotal = 12, defaultStats = true)
         sum += 1;
       }
     }
+  } else if (sum < minimumTotal) {
+    // 36 should be max, handle?
+    while (sum < minimumTotal) {
+      let indexToChange = Math.floor(Math.random() * qualities.length);
+      if (qualities[indexToChange] < 12) {
+        qualities[indexToChange] += 1;
+        sum += 1;
+      }
+    }
   }
 
   return qualities;
