@@ -395,15 +395,18 @@ const assignSkills = (level = 1, modifier = 0) => {
     totalSkillCount += Math.floor((level - 1) / 2);
   }
 
+  // handle case where skill count is higher than 15;
+  totalSkillCount = Math.min(totalSkillCount, 15);
+
   let skills = {};
 
   // if all skills, assign all skills
   if (totalSkillCount === 15) {
     for (let i = 1; i < 16; i += 1) {
       // it will eventually be classSkills[i];
-      skills[i] = i;
+      assignedSkills.push(i);
     }
-    return skills;
+    return assignedSkills;
   }
 
   let random = Math.ceil(Math.random() * 6);
@@ -649,13 +652,21 @@ const assignRaceTrait = (race, savant = false) => {
 };
 
 // function to handle special cases that grant extra skills
-const assignSpecialSkill = (trait = '', skills = []) => {
-  /* 
-    Outline:
-    
-    Must return skills array
-  */
-}
+const assignSpecialSkills = (trait = '', skills = [], level = 1) => {
+  let newSkills = skills.slice();
+
+  if (trait === 'Accomplished Worker') {
+    let modifier = level - Math.floor((level - 1) / 2);
+    newSkills = assignSkills(level, modifier);
+  } else if (trait === 'Scrappy Fighter') {
+    newSkills.push('Special: Bite');
+    newSkills.push('Special: Claw');
+  } else if (trait === 'Jarrith Breath' || trait === 'Death Wail' || trait === 'Touch of Death') {
+    newSkills.push(trait);
+  }
+
+  return newSkills;
+};
 
 // Function to assign a profession. Returns an array.
 const assignProfession = (valkyr = false, likelihood = 'maybe') => {
@@ -880,6 +891,7 @@ const createCharacter = (
     defaultStats,
   );
   let skills = assignSkills(level);
+  skills = assignSpecialSkills(raceTrait[1], skills, level);
   let professions = assignProfession(race[1] === 'Valkyr Aspect', professionLikelihood);
   let classPath = chooseClassPath(characterClass);
   let personality = assignPersonality();
@@ -903,3 +915,5 @@ const createCharacter = (
 module.exports = {
   createCharacter,
 };
+
+assignSpecialSkills('Accomplished Worker', [], 20);
