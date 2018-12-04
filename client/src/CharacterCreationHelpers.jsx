@@ -466,6 +466,7 @@ const assignAttributes = (
   savant = false,
   minimumTotal = 40,
   defaultStats = true,
+  prodigious = false,
 ) => {
   // initialize with the preference order
   let values = {
@@ -493,6 +494,11 @@ const assignAttributes = (
     values[current] = attributeValues[i];
   }
 
+  if (prodigious) {
+    let index = Math.floor(Math.random() * 5);
+    values[attributes[index]] = `${values[attributes[index]]} + Prodigious`;
+  }
+
   return values;
 };
 
@@ -505,6 +511,7 @@ const assignQualities = (
   savant = false,
   minimumTotal = 12,
   defaultStats = true,
+  prodigious = false,
 ) => {
   let values = { obs, char, wis };
   let qualities = ['obs', 'char', 'wis'];
@@ -519,6 +526,11 @@ const assignQualities = (
   for (let i = 0; i < qualities.length; i += 1) {
     let current = qualities[i];
     values[current] = qualityValues[i];
+  }
+
+  if (prodigious) {
+    let index = Math.floor(Math.random() * 3);
+    values[qualities[index]] = `${values[qualities[index]]} + Prodigious`;
   }
 
   return values;
@@ -878,6 +890,7 @@ const createCharacter = (
     savant,
     minimumTotalQualities,
     defaultStats,
+    raceTrait[1] === 'Prodigious',
   );
   let attributes = assignAttributes(
     rankAttributes,
@@ -889,6 +902,7 @@ const createCharacter = (
     savant,
     minimumTotalAttributes,
     defaultStats,
+    raceTrait[1] === 'Prodigious',
   );
   let skills = assignSkills(level);
   skills = assignSpecialSkills(raceTrait[1], skills, level);
@@ -915,5 +929,3 @@ const createCharacter = (
 module.exports = {
   createCharacter,
 };
-
-assignSpecialSkills('Accomplished Worker', [], 20);
