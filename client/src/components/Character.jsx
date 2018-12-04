@@ -78,7 +78,7 @@ export default class Character extends React.Component {
                 </tr>
                 <tr>
                   <td>Points Remaining</td>
-                  <td>{Math.floor(level / 5)}</td>
+                  <td>{Math.floor(level / 5) || '-'}</td>
                 </tr>
                 <tr>
                   <td colSpan="2" className="statHeader">
@@ -99,7 +99,7 @@ export default class Character extends React.Component {
                 </tr>
                 <tr>
                   <td>Points Remaining</td>
-                  <td>{Math.floor(level / 5)}</td>
+                  <td>{Math.floor(level / 5) || '-'}</td>
                 </tr>
               </tbody>
             </table>
