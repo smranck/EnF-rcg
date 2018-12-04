@@ -77,6 +77,10 @@ export default class Character extends React.Component {
                   <td>{str}</td>
                 </tr>
                 <tr>
+                  <td>Points Remaining</td>
+                  <td>{Math.floor(level / 5)}</td>
+                </tr>
+                <tr>
                   <td colSpan="2" className="statHeader">
                     Qualities
                   </td>
@@ -92,6 +96,10 @@ export default class Character extends React.Component {
                 <tr>
                   <td>Wisdom</td>
                   <td>{wis}</td>
+                </tr>
+                <tr>
+                  <td>Points Remaining</td>
+                  <td>{Math.floor(level / 5)}</td>
                 </tr>
               </tbody>
             </table>
@@ -169,14 +177,6 @@ export default class Character extends React.Component {
                 <tr>
                   <td>Native Class Bonus</td>
                   <td>{nativeClassBonus || 'None'}</td>
-                </tr>
-                <tr>
-                  <td>Attribute Points Remaining</td>
-                  <td>{Math.floor(level / 5)}</td>
-                </tr>
-                <tr>
-                  <td>Quality Points Remaining</td>
-                  <td>{Math.floor(level / 5)}</td>
                 </tr>
                 <tr>
                   <td>Profession</td>
