@@ -1,6 +1,7 @@
 # EnF Character Generator
 
 > Character Generator for [the Game of Ebb and Flow](https://sinowl.net/ebbandflow/)
+> Currently deployed at [https://smranck.github.io/EnF-rcg/](https://smranck.github.io/EnF-rcg/)
 
 ## Team
 
@@ -16,10 +17,10 @@
 
 ## Usage
 
-> npm run-script build
-> npm start
->
-> > port 3000 by default
+1. npm run-script build
+2. npm start
+
+- default port: 3000
 
 ## Requirements
 
@@ -29,12 +30,10 @@
 
 ### Installing Dependencies
 
-### Tasks
-
 From within the root directory:
 
 ```sh
 npm install
 ```
 
-## Acknowledgements
+### Tasks
