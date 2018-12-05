@@ -17,8 +17,13 @@
 
 ## Usage
 
-1. npm run-script build
-2. npm start
+```sh
+npm run-script build
+```
+
+```sh
+npm start
+```
 
 - default port: 3000
 
