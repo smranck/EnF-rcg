@@ -1,7 +1,6 @@
 # EnF Character Generator
 
-> Character Generator for [the Game of Ebb and Flow](https://sinowl.net/ebbandflow/)
-> Currently deployed at [https://smranck.github.io/EnF-rcg/](https://smranck.github.io/EnF-rcg/)
+> Character Generator for [the Game of Ebb and Flow](https://sinowl.net/ebbandflow/), currently deployed at [https://smranck.github.io/EnF-rcg/](https://smranck.github.io/EnF-rcg/)
 
 ## Team
 
