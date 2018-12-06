@@ -53,7 +53,7 @@ export default class Character extends React.Component {
               <tbody>
                 <tr>
                   <td colSpan="2" className="statHeader">
-                    Attributes
+                    Base Attributes
                   </td>
                 </tr>
                 <tr>
@@ -76,13 +76,13 @@ export default class Character extends React.Component {
                   <td>Strength</td>
                   <td>{str}</td>
                 </tr>
-                <tr>
+                <tr className="italic">
                   <td>Points Remaining</td>
                   <td>{Math.floor(level / 5) || '-'}</td>
                 </tr>
                 <tr>
                   <td colSpan="2" className="statHeader">
-                    Qualities
+                    Base Qualities
                   </td>
                 </tr>
                 <tr>
@@ -97,7 +97,7 @@ export default class Character extends React.Component {
                   <td>Wisdom</td>
                   <td>{wis}</td>
                 </tr>
-                <tr>
+                <tr className="italic">
                   <td>Points Remaining</td>
                   <td>{Math.floor(level / 5) || '-'}</td>
                 </tr>

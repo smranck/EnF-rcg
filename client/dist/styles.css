@@ -219,3 +219,7 @@ input {
 .left {
   float: left;
 }
+
+.italic {
+  font-style: italic;
+}

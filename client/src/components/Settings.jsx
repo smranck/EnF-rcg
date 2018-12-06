@@ -116,7 +116,7 @@ export default class Character extends React.Component {
             <sup className="tooltip">
               <span>[?]</span>
               <span className="tooltiptext">
-                While selected, Attributes will sum to 40 and Qualities will sum to 24
+                While selected, Base Attributes sum to 40 and Base Qualities sum to 24
               </span>
             </sup>
             <input
