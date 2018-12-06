@@ -45,7 +45,7 @@ export default class App extends React.Component {
     const { name, value } = target;
 
     this.setState({
-      [name]: value,
+      [name]: value === 'False' ? false : value,
       nativeClassDesired: false,
     });
   }
@@ -55,16 +55,15 @@ export default class App extends React.Component {
     const { name, value } = target;
 
     this.setState({
-      [name]: value,
+      [name]: value === 'False' ? false : value,
     });
   }
 
   changeDesiredRace(event) {
     const { target } = event;
     const { name, value } = target;
-
     this.setState({
-      [name]: value,
+      [name]: value === 'False' ? false : value,
     });
   }
 
