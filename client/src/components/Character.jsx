@@ -76,8 +76,8 @@ export default class Character extends React.Component {
                   <td>Strength</td>
                   <td>{str}</td>
                 </tr>
-                <tr className="italic">
-                  <td>Points Remaining</td>
+                <tr>
+                  <td className="italic">Points Remaining</td>
                   <td>{Math.floor(level / 5) || '-'}</td>
                 </tr>
                 <tr>
@@ -97,8 +97,8 @@ export default class Character extends React.Component {
                   <td>Wisdom</td>
                   <td>{wis}</td>
                 </tr>
-                <tr className="italic">
-                  <td>Points Remaining</td>
+                <tr>
+                  <td className="italic">Points Remaining</td>
                   <td>{Math.floor(level / 5) || '-'}</td>
                 </tr>
               </tbody>
