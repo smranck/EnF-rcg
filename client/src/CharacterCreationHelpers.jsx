@@ -844,6 +844,12 @@ const assignPersonality = () => {
   return personalities[Math.ceil(Math.random() * 12)];
 };
 
+const assignExperience = (level = 1) => {
+  /*
+    Will return an appropriate amount of experience points
+  */
+}
+
 const createCharacter = (
   maxLevel = 20,
   desiredLevel = false,
@@ -909,12 +915,14 @@ const createCharacter = (
   let professions = assignProfession(race[1] === 'Valkyr Aspect', professionLikelihood);
   let classPath = chooseClassPath(characterClass);
   let personality = assignPersonality();
+  let experience = assignExperience(level);
   let character = {
     level,
     race: race[1],
     characterClass,
     nativeClassBonus,
     classPath,
+    experience,
     personality,
     professions,
     raceTrait,
