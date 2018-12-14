@@ -844,11 +844,19 @@ const assignPersonality = () => {
   return personalities[Math.ceil(Math.random() * 12)];
 };
 
-const assignExperience = (level = 1) => {
+const assignExperience = (level = 1, random = false) => {
   /*
     Will return an appropriate amount of experience points
   */
-}
+  const levelExperienceEndpoints = {};
+  let start = levelExperienceEndpoints[level][0];
+  let end = levelExperienceEndpoints[level][1];
+  let range = end - start;
+  if (random) {
+    return Math.floor(Math.random() * range) + start;
+  }
+  return start;
+};
 
 const createCharacter = (
   maxLevel = 20,
