@@ -22,6 +22,30 @@ const classList = {
   20: 'Twilight Sentry',
 };
 
+// Endpoints for level experience values such that level:[start, end]
+const levelExperienceEndpoints = {
+  1: [0, 999],
+  2: [1000, 2999],
+  3: [3000, 6999],
+  4: [7000, 12999],
+  5: [13000, 20999],
+  6: [21000, 30999],
+  7: [31000, 42999],
+  8: [43000, 56999],
+  9: [57000, 72999],
+  10: [73000, 90999],
+  11: [91000, 109999],
+  12: [110000, 132999],
+  13: [133000, 156999],
+  14: [157000, 182999],
+  15: [183000, 210999],
+  16: [211000, 240999],
+  17: [241000, 272999],
+  18: [273000, 306999],
+  19: [307000, 349999],
+  20: [350000, 400000],
+};
+
 // Numbers in array correspond to classList
 const nativeClasses = {
   Arkhan: [1, 2, 3, 4],
@@ -844,11 +868,8 @@ const assignPersonality = () => {
   return personalities[Math.ceil(Math.random() * 12)];
 };
 
+// function to assign experience values
 const assignExperience = (level = 1, random = false) => {
-  /*
-    Will return an appropriate amount of experience points
-  */
-  const levelExperienceEndpoints = {};
   let start = levelExperienceEndpoints[level][0];
   let end = levelExperienceEndpoints[level][1];
   let range = end - start;
