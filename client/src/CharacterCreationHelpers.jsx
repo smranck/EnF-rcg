@@ -874,7 +874,7 @@ const assignExperience = (level = 1, random = false) => {
   let end = levelExperienceEndpoints[level][1];
   let range = end - start;
   if (random) {
-    return Math.floor(Math.random() * range) + start;
+    return Math.min(Math.floor(Math.random() * range, Math.random() * range)) + start;
   }
   return start;
 };
@@ -944,7 +944,7 @@ const createCharacter = (
   let professions = assignProfession(race[1] === 'Valkyr Aspect', professionLikelihood);
   let classPath = chooseClassPath(characterClass);
   let personality = assignPersonality();
-  let experience = assignExperience(level);
+  let experience = assignExperience(level, !!desiredLevel);
   let character = {
     level,
     race: race[1],
