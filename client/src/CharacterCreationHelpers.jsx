@@ -944,7 +944,7 @@ const createCharacter = (
   let professions = assignProfession(race[1] === 'Valkyr Aspect', professionLikelihood);
   let classPath = chooseClassPath(characterClass);
   let personality = assignPersonality();
-  let experience = assignExperience(level, !!desiredLevel);
+  let experience = assignExperience(level, !desiredLevel);
   let character = {
     level,
     race: race[1],

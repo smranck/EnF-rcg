@@ -9,6 +9,7 @@ export default class Character extends React.Component {
       race,
       characterClass,
       classPath,
+      experience,
       nativeClassBonus,
       personality,
       professions,
@@ -130,6 +131,10 @@ export default class Character extends React.Component {
                 <tr>
                   <td>Level</td>
                   <td>{level}</td>
+                </tr>
+                <tr>
+                  <td>Experience</td>
+                  <td>{experience}</td>
                 </tr>
                 <tr>
                   <td>Race</td>
