@@ -9,7 +9,7 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       maxLevel: 20,
-      desiredLevel: false,
+      desiredLevel: 1,
       desiredClass: false,
       nativeClassDesired: false,
       desiredRace: false,
