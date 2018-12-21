@@ -879,6 +879,17 @@ const assignExperience = (level = 1, random = false) => {
   return start;
 };
 
+// function to assign divine favors
+const assignDivineFavors = (divineFavors = true) => {
+  if (!divineFavors) {
+    return null;
+  }
+  /*
+    Will have to choose the deity
+    then assign the numbers
+  */
+}
+
 const createCharacter = (
   maxLevel = 20,
   desiredLevel = false,
