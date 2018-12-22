@@ -880,15 +880,19 @@ const assignExperience = (level = 1, random = false) => {
 };
 
 // function to assign divine favors
-const assignDivineFavors = (divineFavors = true) => {
-  if (!divineFavors) {
+const assignDivineFavors = (profession = []) => {
+  if (profession.length === 0) {
     return null;
+  }
+  if (profession.length > 0 || profession[0] === 'Special Cleric') {
+    // Assign special and return
   }
   /*
     Will have to choose the deity
     then assign the numbers
+    remember - valkyr aspect has 2 clerics
   */
-}
+};
 
 const createCharacter = (
   maxLevel = 20,
