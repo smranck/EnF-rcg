@@ -888,9 +888,7 @@ const assignDivineFavors = (profession = []) => {
     // Assign special and return
   }
   /*
-    Will have to choose the deity
-    then assign the numbers
-    remember - valkyr aspect has 2 clerics
+    Assign Deity
   */
 };
 
