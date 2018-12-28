@@ -884,8 +884,9 @@ const assignDivineFavors = (profession = []) => {
   if (profession.length === 0) {
     return null;
   }
-  if (profession.length > 0 || profession[0] === 'Special Cleric') {
+  if (profession.length > 1 || profession[0] === 'Special Cleric') {
     // Assign special and return
+    return 'Amandra, Keeper of the Spirit World';
   }
   /*
     Assign Deity
