@@ -879,18 +879,25 @@ const assignExperience = (level = 1, random = false) => {
   return start;
 };
 
-// function to assign divine favors
-const assignDivineFavors = (profession = []) => {
+// function to assign divine figures
+const assignDivineFigures = (profession = []) => {
   if (profession.length === 0) {
-    return null;
+    return [];
   }
   if (profession.length > 1 || profession[0] === 'Special Cleric') {
     // Assign special and return
-    return 'Amandra, Keeper of the Spirit World';
+    return ['Amandra'];
   }
-  /*
-    Assign Deity
-  */
+  const gods = ['Altina', 'Orulan', 'Yunarelle', 'Vandra'];
+  const deities = {
+    Altina: ['Anselet', 'Joetta', 'Owini', 'Simkin'],
+    Orulan: ['Emory', 'Gervaise', 'Josselyn', 'Kristene'],
+    Yunarelle: ['Arturus', 'Edeline', 'Evardin', 'Lunette'],
+    Vandra: ['Gilbard', 'Gwenor', 'Keida', 'Rotgar'],
+  };
+  const god = gods[Math.floor(Math.random() * gods.length)];
+  const deity = deities[god][Math.floor(Math.random() * deities[god].length)];
+  return [god, deity];
 };
 
 const createCharacter = (
