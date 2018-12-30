@@ -881,7 +881,7 @@ const assignExperience = (level = 1, random = false) => {
 
 // function to assign divine figures
 const assignDivineFigures = (profession = []) => {
-  if (profession.length === 0) {
+  if (profession.length === 0 || (profession.length === 1 && profession[0] !== 'Cleric')) {
     return [];
   }
   if (profession.length > 1 || profession[0] === 'Special Cleric') {
