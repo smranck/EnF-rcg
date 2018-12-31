@@ -966,6 +966,7 @@ const createCharacter = (
   let classPath = chooseClassPath(characterClass);
   let personality = assignPersonality();
   let experience = assignExperience(level, !desiredLevel);
+  let divineFigures = assignDivineFigures(professions);
   let character = {
     level,
     race: race[1],
