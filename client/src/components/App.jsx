@@ -141,6 +141,7 @@ export default class App extends React.Component {
       race,
       characterClass,
       classPath,
+      divineFigures,
       experience,
       nativeClassBonus,
       personality,
@@ -160,6 +161,7 @@ export default class App extends React.Component {
       race,
       characterClass,
       classPath,
+      divineFigures,
       experience,
       nativeClassBonus,
       personality,
@@ -183,6 +185,7 @@ export default class App extends React.Component {
       race,
       characterClass,
       classPath,
+      divineFigures,
       experience,
       nativeClassBonus,
       personality,
@@ -218,6 +221,7 @@ export default class App extends React.Component {
               race={race}
               characterClass={characterClass}
               classPath={classPath}
+              divineFigures={divineFigures}
               experience={experience}
               nativeClassBonus={nativeClassBonus}
               personality={personality}
