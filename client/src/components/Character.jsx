@@ -13,6 +13,7 @@ export default class Character extends React.Component {
       experience,
       nativeClassBonus,
       personality,
+      prayerPoints,
       professions,
       raceTrait,
       traits,
@@ -198,6 +199,12 @@ export default class Character extends React.Component {
                   <tr>
                     <td>Deity</td>
                     <td>{divineFigures[1]}</td>
+                  </tr>
+                ) : null}
+                {divineFigures.length ? (
+                  <tr>
+                    <td>Prayer Points</td>
+                    <td>{prayerPoints}</td>
                   </tr>
                 ) : null}
                 <tr>
