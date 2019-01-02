@@ -978,6 +978,7 @@ const createCharacter = (
   let personality = assignPersonality();
   let experience = assignExperience(level, !desiredLevel);
   let divineFigures = assignDivineFigures(professions);
+  let prayerPoints = assignPrayerPoints(level);
   let character = {
     level,
     race: race[1],
@@ -987,6 +988,7 @@ const createCharacter = (
     divineFigures,
     experience,
     personality,
+    prayerPoints,
     professions,
     raceTrait,
     skills,
