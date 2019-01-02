@@ -900,6 +900,17 @@ const assignDivineFigures = (professions = []) => {
   return [god, deity];
 };
 
+const assignPrayerPoints = (level) => {
+  if (level >= 8) {
+    return 20;
+  }
+  let points = 6;
+  for (let i = 1; i < level; i += 1) {
+    points += 2;
+  }
+  return points;
+};
+
 const createCharacter = (
   maxLevel = 20,
   desiredLevel = false,
