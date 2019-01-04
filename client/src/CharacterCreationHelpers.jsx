@@ -684,6 +684,14 @@ const assignRaceTrait = (race, savant = false) => {
     }
   }
 
+  // handle specific case for Path of the Valkyr
+  if (race === 'Valkyr Aspect' && random === 3) {
+    const paths = ['Knight', 'Lancer', 'Slayer', 'Sorceror'];
+    traits[1] += ' - ';
+    let randomPath = Math.floor(Math.random() * paths.length);
+    traits[1] += paths[randomPath];
+  }
+
   return traits;
 };
 
