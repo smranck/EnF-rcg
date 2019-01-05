@@ -695,6 +695,26 @@ const assignRaceTrait = (race, savant = false) => {
   return traits;
 };
 
+assignSpecialRaceTrait = (race) => {
+  const specialTraits = {
+    Arkhan: 'Arkhan Physiology',
+    Equirion: 'Equirion Physiology',
+    Fibblan: 'Fibblan Physiology',
+    Human: 'The Hardworking',
+    Iquoran: 'Iquoran Physiology',
+    Khibblan: 'Khibblan Physiology',
+    Chezan: 'Great Shadow Infection',
+    Cubi: 'Insatiable Lust',
+    Felia: 'Felesian Ancestry',
+    Jarrith: 'Jarrith Psysiology',
+    Lich: 'Phylactery',
+    Merfolk: 'Hydration',
+    'True Banshee': 'Ghastly Physiology',
+    'Valkyr Aspect': 'Divine Intervention',
+  };
+  return specialTraits[race] || false;
+};
+
 // function to handle special cases that grant extra skills
 const assignSpecialSkills = (trait = '', skills = [], level = 1) => {
   let newSkills = skills.slice();
