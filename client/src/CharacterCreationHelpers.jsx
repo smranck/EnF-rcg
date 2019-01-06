@@ -695,7 +695,7 @@ const assignRaceTrait = (race, savant = false) => {
   return traits;
 };
 
-assignSpecialRaceTrait = (race) => {
+const assignSpecialRaceTrait = (race) => {
   const specialTraits = {
     Arkhan: 'Arkhan Physiology',
     Equirion: 'Equirion Physiology',
@@ -714,6 +714,7 @@ assignSpecialRaceTrait = (race) => {
   };
   return specialTraits[race] || false;
 };
+
 
 // function to handle special cases that grant extra skills
 const assignSpecialSkills = (trait = '', skills = [], level = 1) => {
